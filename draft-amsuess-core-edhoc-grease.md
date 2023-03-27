@@ -166,3 +166,11 @@ Do the GREASE EADs add any value that padding does not already add?
 
 Probably yes, because padding is "special enough" that it could be handled in a hard-coded fashion.
 (Then again, there's nothing but the effort stopping anyone else from doing the same with the GREASE EADs, right?)
+
+Can anything be done about extra methods and COSE headers?
+
+They would not result in successful operations,
+but maybe there is still some value in registering one or two --
+using them would mean sacrificing the full connection,
+but it may still be possible to conclude that the extension points are in order
+from watching the EDHOC exchange fail in the predicted way.
