@@ -31,6 +31,8 @@ to ensure peers correctly handle unknown values.
 
 \[ See abstract \]
 
+The introduction of {{RFC8701}} provides comprehensive motivation for adding such extensions.
+
 The extension points of EDHOC are
 cipher suites,
 methods,
@@ -40,8 +42,6 @@ Of these,
 EADs and cipher suites
 can be used in such a way that even in the presence of an unknown value,
 a connection can still be established.
-
-The introduction of {{RFC8701}} provides comprehensive motivation for adding such extensions.
 
 # The GREASE EAD labels
 
