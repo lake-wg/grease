@@ -128,7 +128,7 @@ in a correct EDHOC implementation.
 
 IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
-established in {{draft-ietf-lake-edhoc-19}}:
+established in {{I-D.ietf-lake-edhoc}}:
 
 161, 41121, 43691, 44976
 
@@ -140,7 +140,7 @@ and this document as a reference.
 
 IANA is requested to register
 four new values into the EDHOC Cipher Suites Registry
-established in {{draft-ietf-lake-edhoc-19}}:
+established in {{I-D.ietf-lake-edhoc}}:
 
 160, 41120, -41121, 43690
 
