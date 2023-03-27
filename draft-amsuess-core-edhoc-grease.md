@@ -33,7 +33,7 @@ to ensure peers correctly handle unknown values.
 
 The introduction of {{RFC8701}} provides comprehensive motivation for adding such extensions.
 
-The extension points of EDHOC are
+The extension points of the EDHOC protocol ({{I-D.ietf-lake-edhoc}}) are
 cipher suites,
 methods,
 EADs (External Authorization Data items)
