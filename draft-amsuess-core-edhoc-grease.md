@@ -56,14 +56,14 @@ they can afford to send addtional data.
 
 This document registers the following EAD labels as GREASE EADs:
 
-161, 41121, 43691, 44976
+160, 41120, 43690, 44975
 
 These EADs are available in all EDHOC messages.
-The EADs are only used in their negative (non-critical) form.
+The EADs are only used in their positive (non-critical) form.
 
 ## Use of GREASE EADs by message senders
 
-A sender of an EDHOC message MAY send a GREASE EAD using the non-critical (negative) form at any time,
+A sender of an EDHOC message MAY send a GREASE EAD using the non-critical (positive) form at any time,
 with any or no EAD value (that is, with or without a byte string of any usable length),
 in any message.
 
@@ -139,7 +139,7 @@ IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
 established in {{I-D.ietf-lake-edhoc}}:
 
-161, 41121, 43691, 44976
+160, 41120, 43690, 44975
 
 All share the name "GREASE",
 the description "Arbitrary data to ensure extensibility",
@@ -174,3 +174,11 @@ but maybe there is still some value in registering one or two --
 using them would mean sacrificing the full connection,
 but it may still be possible to conclude that the extension points are in order
 from watching the EDHOC exchange fail in the predicted way.
+
+# Change log
+
+Since -00:
+
+* Fixed a mix-up between positivity and criticality of options.
+* Adjusted numbers accordingly to once more fit in the `0xa.` pattern
+  (actually they're using `0x.a`, but that doesn't work the same way with CBOR).
