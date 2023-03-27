@@ -1,6 +1,6 @@
 ---
 title: "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility"
-docname: draft-amsuess-core-lake-grease
+docname: draft-amsuess-core-edhoc-grease-latest
 ipr: trust200902
 stand_alone: true
 cat: info
