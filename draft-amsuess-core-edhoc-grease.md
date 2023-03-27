@@ -43,6 +43,15 @@ EADs and cipher suites
 can be used in such a way that even in the presence of an unknown value,
 a connection can still be established.
 
+Unlike in TLS GREASE,
+EDHOC is operating on tight bandwidth and message size budget,
+with some messages just barely fitting within relevant networks' fragmentation limits.
+Thus,
+more than with TLS GREASE,
+it is up to implementations to decide
+whether in their particular use case
+they can afford to send addtional data.
+
 # The GREASE EAD labels
 
 This document registers the following EAD labels as GREASE EADs:
