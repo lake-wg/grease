@@ -1,4 +1,4 @@
 # License
 
 See the
-[guidelines for contributions](https://github.com/git@gitlab.com:chrysn/core-edhoc-grease/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://gitlab.com/chrysn/core-edhoc-grease/-/blob/main/CONTRIBUTING.md).

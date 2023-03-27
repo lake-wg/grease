@@ -2,16 +2,14 @@
 
 This is the working area for the individual Internet-Draft, "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility".
 
-* [Editor's Copy](https://git@gitlab.com:chrysn.github.io/core-edhoc-grease/#go.draft-amsuess-core-edhoc-grease.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-amsuess-core-edhoc-grease)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-amsuess-core-edhoc-grease)
-* [Compare Editor's Copy to Individual Draft](https://git@gitlab.com:chrysn.github.io/core-edhoc-grease/#go.draft-amsuess-core-edhoc-grease.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/git@gitlab.com:chrysn/core-edhoc-grease/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://gitlab.com/chrysn/core-edhoc-grease/-/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
