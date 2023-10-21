@@ -75,7 +75,7 @@ On networks where the data added by the grease EADs does not significantly impac
 senders SHOULD irregularly send arbitrary (possibly random) GREASE EADs with their messages
 to ensure that errors resulting from the use of GREASE are detected.
 
-The GREASE messages MAY be used as an alternative form of padding.
+The GREASE EADs MAY be used as an alternative form of padding.
 
 ### Pattern for limited fingerprinting {#suggested-pattern}
 
@@ -94,7 +94,7 @@ in any way that would allow random GREASE EADs
 to alter the security context that gets established.
 
 It MAY alter its behavior in other ways;
-in particular, it is SHOULD randomly insert GREASE EADs
+in particular, it SHOULD randomly insert GREASE EADs
 in later messages of an exchange in which any were received.
 
 If it does not alter its behavior,
