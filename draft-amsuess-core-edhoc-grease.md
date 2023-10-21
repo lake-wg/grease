@@ -183,6 +183,7 @@ Since -00:
 * Fixed a mix-up between positivity and criticality of options.
 * Adjusted numbers accordingly to once more fit in the `0xa.` pattern
   (actually they're using `0x.a`, but that doesn't work the same way with CBOR).
+* Text improvements around recipient side processing.
 
 # Acknowledgements
 {:numbered="false"}
