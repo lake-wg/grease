@@ -97,10 +97,10 @@ It MAY alter its behavior in other ways;
 in particular, it is SHOULD randomly insert GREASE EADs
 in later messages of an exchange in which any were received.
 
-As the EADs are only used in non-critical form,
-the behavior of a recipient that is unaware of the GREASE options
-is to ignore them.
-This satisfies the requirements on GREASE processing.
+If it does not alter its behavior,
+it is RECOMMENDED that implementations make no attempt to recognize GREASE EADs,
+and apply the default processing --
+that is, to ignoring any unknown non-critical EADs.
 
 # GREASE cipher suites
 
@@ -114,8 +114,9 @@ at any position in its sequence of preferred cipher suites.
 A responder MUST NOT support any of these cipher suites,
 and MUST treat them like any other cipher suite it does not support.
 
+Thus, these cipher suites never occur as the selected cipher suite.
 An initiator whose choice of a GREASE cipher suite is accepted
-MUST discontinue the protocol.
+needs to discontinue the protocol.
 
 # Privacy considerations
 
@@ -182,3 +183,9 @@ Since -00:
 * Fixed a mix-up between positivity and criticality of options.
 * Adjusted numbers accordingly to once more fit in the `0xa.` pattern
   (actually they're using `0x.a`, but that doesn't work the same way with CBOR).
+
+# Acknowledgements
+{:numbered="false"}
+
+Marco Tiloca pointed out a critical error in the numeric constructions.
+Göran Selander provided input to reduce mistakable text.
