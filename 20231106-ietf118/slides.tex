@@ -1,0 +1,93 @@
+\documentclass[aspectratio=169,colorlinks]{beamer}
+\usetheme{Boadilla} % plainest one with slide number footer
+% The empty linkcolor is mainly to not have a non-matching color in the presentation name in the footer
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue!50!black}
+
+% generic packages
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{verbatim}
+
+% about the presentation
+\title[Applying GREASE to EDHOC]{Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility}
+\subtitle{\texttt{ draft-amsuess-core-edhoc-grease}}
+\author{Christian~Amsüss}
+\date{IETF118 Prague, LAKE, 2023-11-06}
+
+% This should be my "always used in presentations" git module
+\newcommand{\rfc}[1]{\href{https://datatracker.ietf.org/doc/html/rfc#1}{RFC~#1}}
+\newcommand{\ietfdraft}[1]{\href{https://datatracker.ietf.org/doc/draft-#1/}{draft #1}}
+
+% for check marks
+\usepackage{pifont}
+\usepackage{amssymb}
+
+% attach self
+
+\usepackage{embedfile}
+\embedfile{\jobname.tex}
+\embedfile{Makefile}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Long time ago in London\ldots}\Large
+    % 2018
+  ``EDHOC will start small and then add all things in TLS back in.''
+
+  \bigskip
+
+  Let's be selective -- and then mindfully take good parts (e.\,g. \rfc{8701}).
+\end{frame}
+
+\begin{frame}{GREASE}\Large
+  \begin{itemize}
+    \item EDHOC has extension points
+    \item Implementations often just see what they expect
+    \item Middleboxes can often just deal with what they expect
+  \end{itemize}
+
+  \bigskip
+
+  \ldots so if extension points go unused, they might become unusable.
+
+  \bigskip
+
+  We apply GREASE to prevent the joins from rusting shut.
+\end{frame}
+
+\begin{frame}{Concrete extension points}\Large
+  \begin{itemize}
+    \item[\ding{52}] EAD items: $1\times$ 1+1, $3\times$ 1+2; all optional
+    \item[\ding{52}] Cipher suites: $1\times$ 1+1, $3\times$ 1+2; responder can't select them
+    \item[\ding{56}] Methods: Not negotiated
+    \item[?] COSE headers: Not negotiated % someone more versed in COSE might know a way how we could extend this still, and not fail with a GREASE unaware peer (which is a tacit base requirement).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Caveats}\Large
+  \begin{itemize}
+    \item We're message size constrained.
+
+      $\to$ Apply it in applications where the added size will be tolerable.
+
+    \item It can be a covert channel (cf. INTDIR on padding).
+
+      $\to$ Yes. As can the use of any other EAD.
+
+    \item The distribution and values of options reveal some data about the implementation.
+
+      $\to$ Concrete recommendation available on size and choice -- \\large anonymity set.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Advancing GREASE for EDHOC}\Large
+  \begin{itemize}
+    \item Check against \rfc{9170} guidance.
+    \item Fit in the WG?
+    \item Should be an easy document.
+  \end{itemize}
+\end{frame}
+
+\end{document}
