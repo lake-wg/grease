@@ -61,9 +61,13 @@
   \begin{itemize}
     \item[\ding{52}] EAD items: $1\times$ 1+1, $3\times$ 1+2; all optional
     \item[\ding{52}] Cipher suites: $1\times$ 1+1, $3\times$ 1+2; responder can't select them
-    \item[\ding{56}] Methods: Not negotiated
+    \item[?] Methods: Not negotiated
     \item[?] COSE headers: Not negotiated % someone more versed in COSE might know a way how we could extend this still, and not fail with a GREASE unaware peer (which is a tacit base requirement).
   \end{itemize}
+
+  \bigskip
+
+  \ldots and if we could do the latter, should we?
 \end{frame}
 
 \begin{frame}{Caveats}\Large
@@ -85,6 +89,7 @@
 \begin{frame}{Advancing GREASE for EDHOC}\Large
   \begin{itemize}
     \item Check against \rfc{9170} guidance.
+    \item Check against \ietfdraft{edm-protocol-greasing} and \href{https://datatracker.ietf.org/meeting/118/session/edm}{upcoming work}.
     \item Fit in the WG?
     \item Should be an easy document.
   \end{itemize}
