@@ -62,6 +62,8 @@ This document registers the following EAD labels as GREASE EADs:
 These EADs are available in all EDHOC messages.
 The EADs are only used in their positive (non-critical) form.
 
+It is expected that future documents register additional values with the same semantics.
+
 ## Use of GREASE EADs by message senders
 
 A sender of an EDHOC message MAY send a GREASE EAD using the non-critical (positive) form at any time,
@@ -106,6 +108,8 @@ and apply the default processing rules.
 This document registers the following cipher suites:
 
 160, 41120, -41121, 43690
+
+It is expected that future documents register additional values with the same semantics.
 
 An initiator may insert a GREASE cipher suite
 at any position in its sequence of preferred cipher suites.
