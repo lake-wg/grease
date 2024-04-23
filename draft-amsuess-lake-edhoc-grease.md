@@ -96,12 +96,10 @@ to alter the security context that gets established.
 
 It MAY alter its behavior in other ways;
 in particular, it SHOULD randomly insert GREASE EADs
-in later messages of an exchange in which any were received.
+in later messages of an exchange in which unprocessed EADs (including GREASE EADs) were present.
 
-If it does not alter its behavior,
-it is RECOMMENDED that implementations make no attempt to recognize GREASE EADs,
-and apply the default processing --
-that is, to ignoring any unknown non-critical EADs.
+Implementations SHOULD NOT attempt to recognize GREASE EADs,
+and apply the default processing rules.
 
 # GREASE cipher suites
 
