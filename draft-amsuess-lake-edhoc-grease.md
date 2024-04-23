@@ -32,19 +32,17 @@ to ensure peers correctly handle unknown values.
 
 \[ See abstract \]
 
-The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions.
+The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
+{{I-D.edm-protocol-greasing-02}} provides additional background that influenced this document.
 
 The extension points of the EDHOC protocol ({{RFC9528}}) are
 cipher suites,
 methods,
 EADs (External Authorization Data items)
 and COSE headers.
-Of these,
-EADs and cipher suites
-can be used in such a way that even in the presence of an unknown value,
-a connection can still be established.
+This document utilizes the cipher suite and EAD extension points.
 
-Unlike in TLS GREASE,
+Unlike in TLS GREASE {{RFC8701}},
 EDHOC is operating on tight bandwidth and message size budget,
 with some messages just barely fitting within relevant networks' fragmentation limits.
 Thus,
@@ -52,6 +50,26 @@ more than with TLS GREASE,
 it is up to implementations to decide
 whether in their particular use case
 they can afford to send addtional data.
+
+## Variability in other extension points
+
+If the selected method or the used COSE heades are unsupported by the peer,
+EDHOC does not conclude successfully.
+While values could be reserved for these for use as GREASE,
+these failed attempts would not be verified between the EDHOC participants
+without maintaining state between attempted EDHOC sessions.
+Such an addition is considered impractical for constrained devices,
+and thus out of scope for this document.
+
+Recommendations for GREASE {{Section 4 of ?I-D.edm-protocol-greasing-02}}
+also include varying other aspects of the protocol,
+such as varying sequences of elements.
+EDHOC has little known variability,
+and intentionally limits choice at times
+(for example, {{Section 3.3.2 of RFC9528}} allows only the numeric identifier form where that is possible).
+Where variation is allowed,
+e.g. in padding or in the ordering of EAD options,
+applications are encouraged to exercise it.
 
 # The GREASE EAD labels
 
@@ -200,6 +218,10 @@ Since draft-amsuess-core-edhoc-grease-01:
 * Process RFC9170
   - Add a section on failure processing
   - Reference where appropriate
+* Process draft-edm-protocol-greasing-02
+  - Variability outside of extension points
+  - Be firmer against recognizing GREASE values
+  - Point out that future options may be registered (instead of the suggested algorithmic registrations)
 
 Since -00:
 
