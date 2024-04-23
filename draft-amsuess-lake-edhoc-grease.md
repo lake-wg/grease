@@ -11,7 +11,7 @@ author:
   country: Austria
   email: christian@amsuess.com
 normative:
-  I-D.ietf-lake-edhoc:
+  RFC9528:
 informative:
   RFC8701:
   RFC9170:
@@ -34,7 +34,7 @@ to ensure peers correctly handle unknown values.
 
 The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions.
 
-The extension points of the EDHOC protocol ({{I-D.ietf-lake-edhoc}}) are
+The extension points of the EDHOC protocol ({{RFC9528}}) are
 cipher suites,
 methods,
 EADs (External Authorization Data items)
@@ -153,7 +153,7 @@ in a correct EDHOC implementation.
 
 IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
-established in {{I-D.ietf-lake-edhoc}}:
+established in {{RFC9528}}:
 
 160, 41120, 43690, 44975
 
@@ -165,7 +165,7 @@ and this document as a reference.
 
 IANA is requested to register
 four new values into the EDHOC Cipher Suites Registry
-established in {{I-D.ietf-lake-edhoc}}:
+established in {{RFC9528}}:
 
 160, 41120, -41121, 43690
 
@@ -195,6 +195,7 @@ from watching the EDHOC exchange fail in the predicted way.
 
 Since draft-amsuess-core-edhoc-grease-01:
 
+* Update references to RFC9528 🎉
 * Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease
 * Process RFC9170
   - Add a section on failure processing
