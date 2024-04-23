@@ -178,6 +178,10 @@ from watching the EDHOC exchange fail in the predicted way.
 
 # Change log
 
+Since draft-amsuess-core-edhoc-grease-01:
+
+* Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease
+
 Since -00:
 
 * Fixed a mix-up between positivity and criticality of options.
