@@ -14,6 +14,7 @@ normative:
   I-D.ietf-lake-edhoc:
 informative:
   RFC8701:
+  RFC9170:
 
 
 --- abstract
@@ -31,7 +32,7 @@ to ensure peers correctly handle unknown values.
 
 \[ See abstract \]
 
-The introduction of {{RFC8701}} provides comprehensive motivation for adding such extensions.
+The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions.
 
 The extension points of the EDHOC protocol ({{I-D.ietf-lake-edhoc}}) are
 cipher suites,
@@ -118,6 +119,18 @@ Thus, these cipher suites never occur as the selected cipher suite.
 An initiator whose choice of a GREASE cipher suite is accepted
 needs to discontinue the protocol.
 
+# Processing of GREASE related failures
+
+It is RECOMMENDED that any counters or statistics about successful and failed connections
+distinguish between connections in which GREASE was applied and those in which it was not applied.
+Any operator feedback channel, be it immediately to the user or through network monitoring,
+SHOULD warn the operator if there are errors that were determined to originate from the use of GREASE
+or that are significantly likely to originate from there.
+This provides a feedback path as described in {{Section 4.4 of RFC9170}}.
+
+Whether logging of GREASE related failed connection details is appropriate
+depends on the privacy policies of the application.
+
 # Privacy considerations
 
 The way in which GREASE is applied
@@ -181,6 +194,9 @@ from watching the EDHOC exchange fail in the predicted way.
 Since draft-amsuess-core-edhoc-grease-01:
 
 * Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease
+* Process RFC9170
+  - Add a section on failure processing
+  - Reference where appropriate
 
 Since -00:
 
