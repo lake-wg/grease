@@ -30,7 +30,9 @@ to ensure peers correctly handle unknown values.
 
 # Introduction {#introduction}
 
-\[ See abstract \]
+This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
+which was pioneered for TLS in {{RFC8701}},
+to the EDHOC {{RFC9528}} ecosystem.
 
 The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
 {{I-D.edm-protocol-greasing-02}} provides additional background that influenced this document.
@@ -210,6 +212,10 @@ but it may still be possible to conclude that the extension points are in order
 from watching the EDHOC exchange fail in the predicted way.
 
 # Change log
+
+Since draft-amsuess-lake-edhoc-grease-00:
+
+* Expanded introduction section to just point to the abstract any more.
 
 Since draft-amsuess-core-edhoc-grease-01:
 
