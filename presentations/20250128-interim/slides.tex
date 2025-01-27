@@ -1,0 +1,39 @@
+\include{shared/ietf-slides.tex}
+
+% about the presentation
+\title[Applying GREASE to EDHOC]{Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility}
+\subtitle{\texttt{draft-ietf-core-edhoc-grease-00}}
+\author{Christian~Amsüss}
+\date{LAKE interim 2025-01-28}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{GREASE}\Large
+  \begin{itemize}
+    \item ``Only by using the extension capabilities of a protocol is the availability of that capability assured.'' \rfc{9170}\footnote{Also \ietfdraft{edm-protocol-greasing}.}
+    \item This draft just does that.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion points from during WGA}\framesubtitle{``What about the places where we can't grease?''}\Large
+  \begin{itemize}
+    \item MCR: Only Initiator can grease suites.
+
+      \bigskip
+
+      Do nothing? % Simple protocol, limited variability.
+
+      \bigskip
+
+    \item JM: Could it utilize EDHOC Authentication Credential Types as well?
+
+      \bigskip
+
+      What are the EDHOC rules for \\\texttt{ID\_CRED\_I = \{e'kccs': …, 9876: …\}}?
+
+  \end{itemize}
+\end{frame}
+
+\end{document}
