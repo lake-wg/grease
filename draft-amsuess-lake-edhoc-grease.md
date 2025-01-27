@@ -102,7 +102,7 @@ The GREASE EADs MAY be used as an alternative form of padding.
 
 ### Pattern for limited fingerprinting {#suggested-pattern}
 
-A method of deciding how to apply GREASE is suggested as follows:
+A method of applying GREASE is suggested as follows:
 
 * For every message, use GREASE with a random probability of 1 in 64.
 * Pick a random GREASE label out of the uniform distribution of available options.
