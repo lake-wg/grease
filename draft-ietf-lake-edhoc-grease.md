@@ -213,6 +213,12 @@ from watching the EDHOC exchange fail in the predicted way.
 
 # Change log
 
+Since draft-amsuess-lake-edhoc-grease-01:
+
+* Document was adopted in LAKE.
+* Instead of discouraging GREASE around fragmentation limits wholesale, suggest reduced frequency.
+* Editorial fix to fingerprinting section.
+
 Since draft-amsuess-lake-edhoc-grease-00:
 
 * Expanded introduction section to just point to the abstract any more.
