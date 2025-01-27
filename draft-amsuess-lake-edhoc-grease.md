@@ -92,7 +92,7 @@ in any message.
 
 Senders SHOULD consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
-(for example, when the added size causes fragmentation of the message).
+(for example, they might use it less frequently when the added size causes fragmentation of the message).
 
 On networks where the data added by the grease EADs does not significantly impact the network,
 senders SHOULD irregularly send arbitrary (possibly random) GREASE EADs with their messages
