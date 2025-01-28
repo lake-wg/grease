@@ -1,15 +1,17 @@
 # Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility
 
-This is the working area for the individual Internet-Draft, "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility".
+This is the working area for the IETF [LAKE Working Group](https://datatracker.ietf.org/group/lake/documents/) Internet-Draft, "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility".
 
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-amsuess-core-edhoc-grease)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-amsuess-core-edhoc-grease)
+* [Editor's Copy](https://lake-wg.github.io/grease/#go.draft-ietf-lake-edhoc-grease.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-lake-edhoc-grease)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-lake-edhoc-grease)
+* [Compare Editor's Copy to Working Group Draft](https://lake-wg.github.io/grease/#go.draft-ietf-lake-edhoc-grease.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://gitlab.com/chrysn/core-edhoc-grease/-/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/lake-wg/grease/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
