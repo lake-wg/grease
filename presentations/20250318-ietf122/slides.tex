@@ -1,0 +1,76 @@
+\include{shared/ietf-slides.tex}
+
+% about the presentation
+\title[Applying GREASE to EDHOC]{Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility}
+\subtitle{\texttt{draft-ietf-core-edhoc-grease-00}}
+\author{Christian~Amsüss}
+\date{LAKE at IETF122 / Bangkok, 2025-03-18}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{GREASE}\Large
+  \begin{itemize}
+    \item ``Only by using the extension capabilities of a protocol is the availability of that capability assured.'' \rfc{9170}\footnote{Also \ietfdraft{edm-protocol-greasing}.}
+    \item This draft just does that.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Major question: Are COSE headers a greasable extension point?}\framesubtitle{On the nature of \texttt{ID\_CRED\_x}}\Large
+  \texttt{ID\_CRED\_I = \{4: 'one', 12345: "narf"\}}
+
+  \texttt{\{-12345: 99999999(["zort", null, [\{\}]]), 14: \{8: ...\}\}}
+
+  \bigskip
+
+  Outcomes:
+
+  \begin{enumerate}
+    \item It's not a usable extension point.
+    \item Grease it.
+  \end{enumerate}
+
+  \vfill
+
+  {\footnotesize{\url{https://github.com/lake-wg/grease/issues/1}}}
+\end{frame}
+
+\begin{frame}{Other questions}\Large
+  \begin{itemize}
+    \item Open: Be explicit about failure when seeing critical form?
+
+      \bigskip
+
+      Editorial -- mechanics are clear, using it this way is out of scope.
+
+      {\footnotesize{\url{https://github.com/lake-wg/grease/issues/2}}}
+
+      \bigskip
+
+    \item Closing: Only Initiator can grease suites.
+
+      \bigskip
+
+      Yes.
+
+      \bigskip
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Interop}\Large
+  \begin{enumerate}
+    \item Fix own libraries.
+    \item Try with others.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Next steps}\Large
+  \begin{itemize}
+    \item Answer COSE header question. Need help.
+      \bigskip
+    \item Interop: Hold at which stage until done?
+  \end{itemize}
+\end{frame}
+
+\end{document}
