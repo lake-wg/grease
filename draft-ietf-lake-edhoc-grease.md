@@ -80,7 +80,7 @@ This document registers the following EAD labels as GREASE EADs:
 160, 41120, 43690, 44975
 
 These EADs are available in all EDHOC messages.
-The EADs are only used in their positive (non-critical) form.
+The EADs are used in their positive (non-critical) form.
 
 It is expected that future documents register additional values with the same semantics.
 
@@ -195,6 +195,21 @@ the description "Unimplementable cipher suite to ensure extensibility",
 and this document as a reference.
 
 --- back
+
+# Using extension points beyond successful EDHOC runs
+
+Some ways of using the extension points, in particular
+the critical (negative) use of the GREASE EAD labels
+and
+placing a GREASE cipher suite in the selected position
+do not result in the successful continuation of the EDHOC session.
+
+They can be useful during testing
+(e.g. to verify that a peer does indeed implement the correct behavior of not silently tolerating critical EAD items it can not process),
+particulary when they allow a testing system to provoke an error response from the implementation under test.
+However,
+this document is concerned with test performed during successful operation,
+therefore that application is out of scope.
 
 # Open questions
 
