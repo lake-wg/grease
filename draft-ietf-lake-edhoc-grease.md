@@ -55,7 +55,7 @@ they can afford to send addtional data.
 
 ## Variability in other extension points
 
-If the selected method or the used COSE heades are unsupported by the peer,
+If the selected method is unsupported by the peer,
 EDHOC does not conclude successfully.
 While values could be reserved for these for use as GREASE,
 these failed attempts would not be verified between the EDHOC participants
@@ -72,6 +72,11 @@ and intentionally limits choice at times
 Where variation is allowed,
 e.g. in padding or in the ordering of EAD options,
 applications are encouraged to exercise it.
+
+The extension point of COSE headers
+(identifying other ID_CRED_x types)
+is beyond the scope of this document,
+and might be addressed orthogonally in the COSE header registry.
 
 # The GREASE EAD labels
 
@@ -210,21 +215,6 @@ particulary when they allow a testing system to provoke an error response from t
 However,
 this document is concerned with test performed during successful operation,
 therefore that application is out of scope.
-
-# Open questions
-
-Do the GREASE EADs add any value that padding does not already add?
-
-Probably yes, because padding is "special enough" that it could be handled in a hard-coded fashion.
-(Then again, there's nothing but the effort stopping anyone else from doing the same with the GREASE EADs, right?)
-
-Can anything be done about extra methods and COSE headers?
-
-They would not result in successful operations,
-but maybe there is still some value in registering one or two --
-using them would mean sacrificing the full connection,
-but it may still be possible to conclude that the extension points are in order
-from watching the EDHOC exchange fail in the predicted way.
 
 # Change log
 
