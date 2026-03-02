@@ -1211,16 +1211,13 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-using-extension-points-beyo" class="internal xref">Using extension points beyond successful EDHOC runs</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-open-questions" class="internal xref">Open questions</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-change-log" class="internal xref">Change log</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-change-log" class="internal xref">Change log</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1255,7 +1252,7 @@ they can afford to send addtional data.<a href="#section-1-4" class="pilcrow">¶
         <h3 id="name-variability-in-other-extens">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-variability-in-other-extens" class="section-name selfRef">Variability in other extension points</a>
         </h3>
-<p id="section-1.1-1">If the selected method or the used COSE heades are unsupported by the peer,
+<p id="section-1.1-1">If the selected method is unsupported by the peer,
 EDHOC does not conclude successfully.
 While values could be reserved for these for use as GREASE,
 these failed attempts would not be verified between the EDHOC participants
@@ -1271,6 +1268,10 @@ and intentionally limits choice at times
 Where variation is allowed,
 e.g. in padding or in the ordering of EAD options,
 applications are encouraged to exercise it.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+<p id="section-1.1-3">The extension point of COSE headers
+(identifying other ID_CRED_x types)
+is beyond the scope of this document,
+and might be addressed orthogonally in the COSE header registry.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1491,105 +1492,89 @@ this document is concerned with test performed during successful operation,
 therefore that application is out of scope.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="open-questions">
-<section id="appendix-B">
-      <h2 id="name-open-questions">
-<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-open-questions" class="section-name selfRef">Open questions</a>
-      </h2>
-<p id="appendix-B-1">Do the GREASE EADs add any value that padding does not already add?<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">Probably yes, because padding is "special enough" that it could be handled in a hard-coded fashion.
-(Then again, there's nothing but the effort stopping anyone else from doing the same with the GREASE EADs, right?)<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">Can anything be done about extra methods and COSE headers?<a href="#appendix-B-3" class="pilcrow">¶</a></p>
-<p id="appendix-B-4">They would not result in successful operations,
-but maybe there is still some value in registering one or two --
-using them would mean sacrificing the full connection,
-but it may still be possible to conclude that the extension points are in order
-from watching the EDHOC exchange fail in the predicted way.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="change-log">
-<section id="appendix-C">
+<section id="appendix-B">
       <h2 id="name-change-log">
-<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-change-log" class="section-name selfRef">Change log</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-change-log" class="section-name selfRef">Change log</a>
       </h2>
-<p id="appendix-C-1">Since draft-amsuess-lake-edhoc-grease-01:<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">Since draft-amsuess-lake-edhoc-grease-01:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-2.1">
-          <p id="appendix-C-2.1.1">Document was adopted in LAKE.<a href="#appendix-C-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-2.1">
+          <p id="appendix-B-2.1.1">Document was adopted in LAKE.<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-2.2">
-          <p id="appendix-C-2.2.1">Instead of discouraging GREASE around fragmentation limits wholesale, suggest reduced frequency.<a href="#appendix-C-2.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-2.2">
+          <p id="appendix-B-2.2.1">Instead of discouraging GREASE around fragmentation limits wholesale, suggest reduced frequency.<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-2.3">
-          <p id="appendix-C-2.3.1">Editorial fix to fingerprinting section.<a href="#appendix-C-2.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-2.3">
+          <p id="appendix-B-2.3.1">Editorial fix to fingerprinting section.<a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-C-3">Since draft-amsuess-lake-edhoc-grease-00:<a href="#appendix-C-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">Since draft-amsuess-lake-edhoc-grease-00:<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-4.1">
-          <p id="appendix-C-4.1.1">Expanded introduction section to just point to the abstract any more.<a href="#appendix-C-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-4.1">
+          <p id="appendix-B-4.1.1">Expanded introduction section to just point to the abstract any more.<a href="#appendix-B-4.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-C-5">Since draft-amsuess-core-edhoc-grease-01:<a href="#appendix-C-5" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">Since draft-amsuess-core-edhoc-grease-01:<a href="#appendix-B-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-6.1">
-          <p id="appendix-C-6.1.1">Update references to RFC9528 🎉<a href="#appendix-C-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-6.1">
+          <p id="appendix-B-6.1.1">Update references to RFC9528 🎉<a href="#appendix-B-6.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-6.2">
-          <p id="appendix-C-6.2.1">Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease<a href="#appendix-C-6.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-6.2">
+          <p id="appendix-B-6.2.1">Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease<a href="#appendix-B-6.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-6.3">
-          <p id="appendix-C-6.3.1">Process RFC9170<a href="#appendix-C-6.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-6.3">
+          <p id="appendix-B-6.3.1">Process RFC9170<a href="#appendix-B-6.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-6.3.2.1">
-              <p id="appendix-C-6.3.2.1.1">Add a section on failure processing<a href="#appendix-C-6.3.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-6.3.2.1">
+              <p id="appendix-B-6.3.2.1.1">Add a section on failure processing<a href="#appendix-B-6.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-C-6.3.2.2">
-              <p id="appendix-C-6.3.2.2.1">Reference where appropriate<a href="#appendix-C-6.3.2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-B-6.3.2.2">
+              <p id="appendix-B-6.3.2.2.1">Reference where appropriate<a href="#appendix-B-6.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-C-6.4">
-          <p id="appendix-C-6.4.1">Process draft-edm-protocol-greasing-02<a href="#appendix-C-6.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-6.4">
+          <p id="appendix-B-6.4.1">Process draft-edm-protocol-greasing-02<a href="#appendix-B-6.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-6.4.2.1">
-              <p id="appendix-C-6.4.2.1.1">Variability outside of extension points<a href="#appendix-C-6.4.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-6.4.2.1">
+              <p id="appendix-B-6.4.2.1.1">Variability outside of extension points<a href="#appendix-B-6.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-C-6.4.2.2">
-              <p id="appendix-C-6.4.2.2.1">Be firmer against recognizing GREASE values<a href="#appendix-C-6.4.2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-B-6.4.2.2">
+              <p id="appendix-B-6.4.2.2.1">Be firmer against recognizing GREASE values<a href="#appendix-B-6.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-C-6.4.2.3">
-              <p id="appendix-C-6.4.2.3.1">Point out that future options may be registered (instead of the suggested algorithmic registrations)<a href="#appendix-C-6.4.2.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-B-6.4.2.3">
+              <p id="appendix-B-6.4.2.3.1">Point out that future options may be registered (instead of the suggested algorithmic registrations)<a href="#appendix-B-6.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
       </ul>
-<p id="appendix-C-7">Since -00:<a href="#appendix-C-7" class="pilcrow">¶</a></p>
+<p id="appendix-B-7">Since -00:<a href="#appendix-B-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C-8.1">
-          <p id="appendix-C-8.1.1">Fixed a mix-up between positivity and criticality of options.<a href="#appendix-C-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-8.1">
+          <p id="appendix-B-8.1.1">Fixed a mix-up between positivity and criticality of options.<a href="#appendix-B-8.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-8.2">
-          <p id="appendix-C-8.2.1">Adjusted numbers accordingly to once more fit in the <code>0xa.</code> pattern
-(actually they're using <code>0x.a</code>, but that doesn't work the same way with CBOR).<a href="#appendix-C-8.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-8.2">
+          <p id="appendix-B-8.2.1">Adjusted numbers accordingly to once more fit in the <code>0xa.</code> pattern
+(actually they're using <code>0x.a</code>, but that doesn't work the same way with CBOR).<a href="#appendix-B-8.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-C-8.3">
-          <p id="appendix-C-8.3.1">Text improvements around recipient side processing.<a href="#appendix-C-8.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-8.3">
+          <p id="appendix-B-8.3.1">Text improvements around recipient side processing.<a href="#appendix-B-8.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
 </div>
 <div id="acknowledgements">
-<section id="appendix-D">
+<section id="appendix-C">
       <h2 id="name-acknowledgements">
 <a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="appendix-D-1">Marco Tiloca pointed out a critical error in the numeric constructions.
-Göran Selander provided input to reduce mistakable text.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">Marco Tiloca pointed out a critical error in the numeric constructions.
+Göran Selander provided input to reduce mistakable text.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-E">
+<section id="appendix-D">
       <h2 id="name-authors-address">
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
