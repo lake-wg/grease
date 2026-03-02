@@ -216,13 +216,6 @@ However,
 this document is concerned with test performed during successful operation,
 therefore that application is out of scope.
 
-# Open questions
-
-Do the GREASE EADs add any value that padding does not already add?
-
-Probably yes, because padding is "special enough" that it could be handled in a hard-coded fashion.
-(Then again, there's nothing but the effort stopping anyone else from doing the same with the GREASE EADs, right?)
-
 # Change log
 
 Since draft-amsuess-lake-edhoc-grease-01:
