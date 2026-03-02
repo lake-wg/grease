@@ -1,3 +1,5 @@
+<!-- regenerate: on (set to off if you edit this file) -->
+
 # Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility
 
 This is the working area for the IETF [LAKE Working Group](https://datatracker.ietf.org/group/lake/documents/) Internet-Draft, "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility".
@@ -13,9 +15,8 @@ This is the working area for the IETF [LAKE Working Group](https://datatracker.i
 See the
 [guidelines for contributions](https://github.com/lake-wg/grease/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 
