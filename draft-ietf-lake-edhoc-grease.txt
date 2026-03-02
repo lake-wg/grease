@@ -304,6 +304,19 @@ Appendix A.  Using extension points beyond successful EDHOC runs
 
 Appendix B.  Change log
 
+   Since draft-ietf-lake-edhoc-grease-00: Resolve all open issues.
+
+   *  Question on "is this better than padding" removed.  (There are
+      currently implementations of EDHOC that can't use all EAD values
+      but can do padding).
+
+   *  Question of COSE header extension deferred to COSE maintenance.
+
+   *  Use of GREASE values in critical form is out of scope, but
+      appendix illustrates that it can make sense to do, and emphasizes
+      that indeed those options do cause errors when used with negative
+      sign.
+
    Since draft-amsuess-lake-edhoc-grease-01:
 
    *  Document was adopted in LAKE.
