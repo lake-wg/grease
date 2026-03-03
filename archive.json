@@ -1,0 +1,176 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-03-03T02:04:43.788383+00:00",
+  "repo": "lake-wg/grease",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDONwrEt86sXN24",
+      "title": "Are COSE headers a greasable extension point?",
+      "url": "https://github.com/lake-wg/grease/issues/1",
+      "state": "CLOSED",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The ID_CRED_x field can be a map (of COSE Header Parameters) and can fundamentally have multiple keys.\n\n## Challenge\n\nHow *should* an EDHOC implementation behave if something spurious showed up there, eg if instead of\n\n```\n'one'\n```\n\nit said\n\n```\n{4: 'one', 12345: \"narf\"}\n```\n\nor instead of\n\n```\n{14: {8: ...}}\n```\n\nit said\n\n```\n{-12345: 99999999([\"zort\", null, [{}]]), 14: {8: ...}}\n```\n\n## Input\n\n* [Section 3.1 of COSE](https://www.rfc-editor.org/rfc/rfc8152#section-3.1) describes the \"crit\" field, indicating that generally for COSE headers, the default outside some ranges is \"optional to process\" -- that would indicate that indeed the greased forms should work.\n* COSE allows CDDL \"any\" as values, which means we would also grease \"any\"; consequently, all the CBOR parsers inside EDHOC libraries would need to process arbitrary well-formed (and, if memory of 9528 serves, ~deterministically encoded) CBOR. Not having indeterminate length items in there helps, but still, that may be a tall order for implementations that previously got away with only processing integers and strings in that position (if they don't support KCCS).\n\n## Outcomes\n\nIf EDHOC implementations need to ignore unknown keys, then we should grease them. (And, at least for those I've had my hands on, expediently update our implementations to actually be greasable).\n\nIf EDHOC implementations are expected to process every key, the document is fine as it is, and we may just want to summarize the discussion that lead to this conclusion in the rationale for not greasing that point.\n\n---\n\nTagging @gselander who mentioned he'd think about it in the last interim this came up on.",
+      "createdAt": "2025-03-03T16:48:13Z",
+      "updatedAt": "2026-03-02T09:05:54Z",
+      "closedAt": "2026-03-02T09:05:54Z",
+      "comments": [
+        {
+          "author": "gselander",
+          "authorAssociation": "NONE",
+          "body": "RFC 9528 says ID_CRED_x is intended to facilitate the retrieval of the authentication credential, and that applications should strive to make ID_CRED_x as unique as possible, since the recipient may otherwise have to try several keys. \n\nWhen it comes to normative text, these are the main statements:\n\n> EDHOC MUST allow the application to read received information about credentials in ID_CRED_R and ID_CRED_I. EDHOC MUST have access to the authentication key and the authentication credential.\n\nAs I read this, ID_CRED_x is something that, when made available to the application, enables EDHOC to access the authentication key and credential. How the application does this is out of scope.\n\nBut EDHOC shouldn't pay much attention if there is yet another map element -(key, value) pair - in ID_CRED_x.",
+          "createdAt": "2025-03-16T17:43:14Z",
+          "updatedAt": "2025-03-16T17:43:14Z"
+        },
+        {
+          "author": "chrysn",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Taking notes from IETF122 meeting, quoting @malishav: \"there seems to be an interplay with app-profiles and grease. In my mind, greasing COSE header_map does not belong to EDHOC\"",
+          "createdAt": "2025-03-18T11:32:16Z",
+          "updatedAt": "2025-03-18T11:32:16Z"
+        },
+        {
+          "author": "chrysn",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Both those feedbacks are pretty much aligned in \"not our business\".\n\nHow I'd process this into the document is around the lines of\n\n> Extending the `ID_CRED_x` COSE header maps with additional items is out of scope of this document, because looking up (or extracting) a `CRED_x` from an `ID_CRED_x` is up to the application and not the EDHOC implementation. Applications are encouraged to introduce variation in `ID_CRED_x` items they send in any way that the application expects to be functional.\n\n\u2026 maybe with an addition that\n\n> At the time of writing, no COSE header parameters are defined for the use as GREASE, but code points for private use are available, neither in the text nor in the numeric ranges.",
+          "createdAt": "2025-03-18T13:13:41Z",
+          "updatedAt": "2025-03-18T13:13:41Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDONwrEt86uO5VV",
+      "title": "Being explicit about failure from mandatory GREASE items",
+      "url": "https://github.com/lake-wg/grease/issues/2",
+      "state": "CLOSED",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we be explicit in the consequence of applying the default processing rules for present GREASE items means to fail the exchange?\n\nWe don't currently talk about using GREASE to cause failure, and I think it's out of scope for \"regular greasing\" and thus this document, but they'd be handy code points for that purpose (eg. to see whether the sender of the critical GREASE can process the errors well).",
+      "createdAt": "2025-03-16T15:38:46Z",
+      "updatedAt": "2026-03-02T08:47:39Z",
+      "closedAt": "2026-03-02T08:47:39Z",
+      "comments": [
+        {
+          "author": "chrysn",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "It is not made explicit in https://github.com/lake-wg/grease/pull/3, but the appendix points out that outside the scope of this document, there can be testing with the critical form set, and that those tests are expected to not produce working exchanges. (And will show up on users who are unsure who search for \"critical\" and \"negative\").",
+          "createdAt": "2026-03-02T08:47:39Z",
+          "updatedAt": "2026-03-02T08:47:39Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDONwrEt86olGuF",
+      "title": "Add appendix on critical use",
+      "url": "https://github.com/lake-wg/grease/pull/3",
+      "state": "MERGED",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Using EAD items as critical will cause failure \u2013 that has its uses but it's not GREASE. Pointing this out in an appendix should both help set the scope and help implementers justify that yes indeed that's good use (it just needs more context than this document can provide).",
+      "createdAt": "2025-09-15T08:30:11Z",
+      "updatedAt": "2026-03-02T08:44:03Z",
+      "baseRepository": "lake-wg/grease",
+      "baseRefName": "main",
+      "baseRefOid": "ca05d0129b34480391af7d6f4b4ea96e17922f28",
+      "headRepository": "lake-wg/grease",
+      "headRefName": "critical-for-testing",
+      "headRefOid": "b79884da2562e37a875b9dee8f21372d62248231",
+      "closedAt": "2026-03-02T08:43:46Z",
+      "mergedAt": "2026-03-02T08:43:46Z",
+      "mergedBy": "chrysn",
+      "mergeCommit": {
+        "oid": "c38cc385f05c9137eb1ae63080c3ed9fc8d44c3b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDONwrEt87HRVGu",
+      "title": "Address open questions",
+      "url": "https://github.com/lake-wg/grease/pull/4",
+      "state": "MERGED",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "chrysn"
+      ],
+      "labels": [],
+      "body": "* Closes https://github.com/lake-wg/grease/issues/1\r\n* Remove \"does it do more than padding\": Given that the Lakers implementation currently fails with some of the grease values (but not with padding), it should be apparent that there is value in greasing it this way.",
+      "createdAt": "2026-03-02T08:59:12Z",
+      "updatedAt": "2026-03-02T09:06:02Z",
+      "baseRepository": "lake-wg/grease",
+      "baseRefName": "main",
+      "baseRefOid": "6e17954e77f26c612ac7e69543b5bd21f13b5b92",
+      "headRepository": "lake-wg/grease",
+      "headRefName": "cose-is-cose-business",
+      "headRefOid": "16e59abe18dbef89f01e0ba0418a0bb78e7b60b4",
+      "closedAt": "2026-03-02T09:05:53Z",
+      "mergedAt": "2026-03-02T09:05:53Z",
+      "mergedBy": "chrysn",
+      "mergeCommit": {
+        "oid": "e98c29adbc22b59a82e749cf592091267bf24e42"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
