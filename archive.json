@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-03T02:04:43.788383+00:00",
+  "timestamp": "2026-03-15T02:22:43.758849+00:00",
   "repo": "lake-wg/grease",
   "labels": [
     {
@@ -111,6 +111,22 @@
           "updatedAt": "2026-03-02T08:47:39Z"
         }
       ]
+    },
+    {
+      "number": 5,
+      "id": "I_kwDONwrEt87zB44P",
+      "title": "Implementation report from aiocoap",
+      "url": "https://github.com/lake-wg/grease/issues/5",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I've implemented section 2.1.1 in aiocoap (which has already used GREASE in some internal tests), and run self-tests on it.\n\nThat uncovered a bug in Lakers of the very sort that actually using extension point tends to uncover (https://github.com/lake-rs/lakers/pull/416).\n\nSome remarks back into this document:\n\n* Section 2.1.1 does not produce items without payload \u2013 probably OK, this is not a plugtest, and generally, empty options are already in use anyway (eg. aiocoap regularly asks for credentials).\n* There is no equivalent section on cipher suite greasing. 2.1.1 moved out and say something like:\n\n  > Every time you state your cipher suite preferences (as initiator selecting it, or as responder erring and telling), roll. On 1/64, insert any GREASE suite in a random position before the last.",
+      "createdAt": "2026-03-15T02:05:43Z",
+      "updatedAt": "2026-03-15T02:06:46Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
