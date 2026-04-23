@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-15T02:22:43.758849+00:00",
+  "timestamp": "2026-04-23T02:33:52.280521+00:00",
   "repo": "lake-wg/grease",
   "labels": [
     {
@@ -125,6 +125,42 @@
       "body": "I've implemented section 2.1.1 in aiocoap (which has already used GREASE in some internal tests), and run self-tests on it.\n\nThat uncovered a bug in Lakers of the very sort that actually using extension point tends to uncover (https://github.com/lake-rs/lakers/pull/416).\n\nSome remarks back into this document:\n\n* Section 2.1.1 does not produce items without payload \u2013 probably OK, this is not a plugtest, and generally, empty options are already in use anyway (eg. aiocoap regularly asks for credentials).\n* There is no equivalent section on cipher suite greasing. 2.1.1 moved out and say something like:\n\n  > Every time you state your cipher suite preferences (as initiator selecting it, or as responder erring and telling), roll. On 1/64, insert any GREASE suite in a random position before the last.",
       "createdAt": "2026-03-15T02:05:43Z",
       "updatedAt": "2026-03-15T02:06:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDONwrEt88AAAABANH3qA",
+      "title": "Clarity on who a sender is",
+      "url": "https://github.com/lake-wg/grease/issues/6",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "chrysn"
+      ],
+      "labels": [],
+      "body": "Meiling sent a review in https://mailarchive.ietf.org/arch/msg/lake/E0tDQOVK-yItxq5i0A1vthrQrBo; this item tracks question 2.\n\n> Question 2: Regarding who sends GREASE\n>\n> The current guidance seems to imply a one-way or reactive use of\n> GREASE(I'm not sure. Maybe I misunderstood. The \"senders\" mentioned in\n> the text refer to \"I\" or \"R\"?). What happens if a server only ever\n> communicates with clients that don't send GREASE? Its own logic for\n> handling unknown items would never be tested in the field.\n>\n> To ensure both sides of the connection are robust, should we more\n> strongly state that both the Initiator and the Responder have a\n> responsibility to proactively send GREASE, turning it into a\n> bidirectional \"health check\"?\n\nActionable from this is IMO that section 2.1 can state explicitly that this can be started in any of the EDHOC messages, and thus by either party.",
+      "createdAt": "2026-04-22T11:42:46Z",
+      "updatedAt": "2026-04-22T11:42:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDONwrEt88AAAABANPaPg",
+      "title": "Editorial fixes",
+      "url": "https://github.com/lake-wg/grease/issues/7",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "chrysn"
+      ],
+      "labels": [],
+      "body": "Marco has submitted an extensive list of mostly editorial fixes in https://mailarchive.ietf.org/arch/msg/lake/W02bEVHpBqiPb5c6R8hq2-zFuOc; this issue tracks them.\n\n(Not listing them in detail here; I may split things out once I'm done with the parts that are just a matter of sed).",
+      "createdAt": "2026-04-22T12:03:01Z",
+      "updatedAt": "2026-04-22T12:03:01Z",
       "closedAt": null,
       "comments": []
     }
