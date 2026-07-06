@@ -84,12 +84,12 @@ and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
 # The GREASE EAD labels
 
-This document registers the following EAD labels as GREASE EAD items:
+This document registers the following EAD labels for use with GREASE EAD items:
 
 160, 41120, 43690, 44975
 
-These EAD labels are available in all EDHOC messages.
-They are used in their positive (non-critical) form.
+These EAD labels can be used in any EDHOC message
+for non-critical EAD items (see {{Section 3.8 of RFC9528}}).
 
 It is expected that future documents register additional values with the same semantics.
 
