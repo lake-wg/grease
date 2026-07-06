@@ -1308,7 +1308,8 @@ It is expected that future documents register additional values with the same se
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-use-of-grease-ead-items-by-" class="section-name selfRef">Use of GREASE EAD items by message senders</a>
         </h3>
 <p id="section-2.1-1">A sender of an EDHOC message <span class="bcp14">MAY</span> include an arbitrary number of GREASE EAD items,
-with any or no ead_value (that is, with or without a byte string of any usable length).<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+with any or no ead_value (that is, with or without a byte string of any usable length).
+Both parties (the Initiator and the Responder) can send GREASE EAD items in any EDHOC message, without any need for coordination.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1-2">Senders <span class="bcp14">SHOULD</span> consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
 (for example, they might use it less frequently when the added size causes fragmentation of the message).<a href="#section-2.1-2" class="pilcrow">¶</a></p>
@@ -1532,119 +1533,125 @@ therefore that application is out of scope.<a href="#appendix-A-2" class="pilcro
       <h2 id="name-change-log">
 <a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-change-log" class="section-name selfRef">Change log</a>
       </h2>
-<p id="appendix-B-1">Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-2.1">
-          <p id="appendix-B-2.1.1">seccons: Stronly encourage use of GREASE<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.2">
-          <p id="appendix-B-2.2.1">Explicit <span class="bcp14">SHOULD</span> on applying default processing rules (not just by exclusion of <span class="bcp14">SHOULD NOT</span> attempt)<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.3">
-          <p id="appendix-B-2.3.1">Point to EDHOC CS-RNG for fingerprint resistance<a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.4">
-          <p id="appendix-B-2.4.1">Point to CORECONF as example of how to report<a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.5">
-          <p id="appendix-B-2.5.1">Add remark on why numeric values were chosen<a href="#appendix-B-2.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.6">
-          <p id="appendix-B-2.6.1">Elaboration on cipher suite selection<a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.7">
-          <p id="appendix-B-2.7.1">Added BCP14 boilerplate Terminology section<a href="#appendix-B-2.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.8">
-          <p id="appendix-B-2.8.1">Updated reference from edm-protocol-greasing-02 to iab-protocol-greasing (currently at -01)<a href="#appendix-B-2.8.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-2.9">
-          <p id="appendix-B-2.9.1">Editorial fixes; highlights:<a href="#appendix-B-2.9.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B-2.9.2.1">
-              <p id="appendix-B-2.9.2.1.1">Consistency around "EAD items" and "EAD labels"<a href="#appendix-B-2.9.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-B-2.9.2.2">
-              <p id="appendix-B-2.9.2.2.1">EAD items can be critical/non-critical, not labels<a href="#appendix-B-2.9.2.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
+          <p id="appendix-B-2.1.1">Using EADs by sender: Point out that both parties are senders and can grease any message.<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-B-3">Since draft-ietf-lake-edhoc-grease-00: Resolve all open issues.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-4.1">
-          <p id="appendix-B-4.1.1">Question on "is this better than padding" removed. (There are currently implementations of EDHOC that can't use all EAD values but can do padding).<a href="#appendix-B-4.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-4.1.1">seccons: Strongly encourage use of GREASE<a href="#appendix-B-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-4.2">
-          <p id="appendix-B-4.2.1">Question of COSE header extension deferred to COSE maintenance.<a href="#appendix-B-4.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-4.2.1">Explicit <span class="bcp14">SHOULD</span> on applying default processing rules (not just by exclusion of <span class="bcp14">SHOULD NOT</span> attempt)<a href="#appendix-B-4.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-4.3">
-          <p id="appendix-B-4.3.1">Use of GREASE values in critical form is out of scope, but appendix illustrates that it can make sense to do, and emphasizes that indeed those options do cause errors when used with negative sign.<a href="#appendix-B-4.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-4.3.1">Point to EDHOC CS-RNG for fingerprint resistance<a href="#appendix-B-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.4">
+          <p id="appendix-B-4.4.1">Point to CORECONF as example of how to report<a href="#appendix-B-4.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.5">
+          <p id="appendix-B-4.5.1">Add remark on why numeric values were chosen<a href="#appendix-B-4.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.6">
+          <p id="appendix-B-4.6.1">Elaboration on cipher suite selection<a href="#appendix-B-4.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.7">
+          <p id="appendix-B-4.7.1">Added BCP14 boilerplate Terminology section<a href="#appendix-B-4.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.8">
+          <p id="appendix-B-4.8.1">Updated reference from edm-protocol-greasing-02 to iab-protocol-greasing (currently at -01)<a href="#appendix-B-4.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-4.9">
+          <p id="appendix-B-4.9.1">Editorial fixes; highlights:<a href="#appendix-B-4.9.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-4.9.2.1">
+              <p id="appendix-B-4.9.2.1.1">Consistency around "EAD items" and "EAD labels"<a href="#appendix-B-4.9.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-B-4.9.2.2">
+              <p id="appendix-B-4.9.2.2.1">EAD items can be critical/non-critical, not labels<a href="#appendix-B-4.9.2.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
 </li>
       </ul>
-<p id="appendix-B-5">Since draft-amsuess-lake-edhoc-grease-01:<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">Since draft-ietf-lake-edhoc-grease-00: Resolve all open issues.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-6.1">
-          <p id="appendix-B-6.1.1">Document was adopted in LAKE.<a href="#appendix-B-6.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-6.1.1">Question on "is this better than padding" removed. (There are currently implementations of EDHOC that can't use all EAD values but can do padding).<a href="#appendix-B-6.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-6.2">
-          <p id="appendix-B-6.2.1">Instead of discouraging GREASE around fragmentation limits wholesale, suggest reduced frequency.<a href="#appendix-B-6.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-6.2.1">Question of COSE header extension deferred to COSE maintenance.<a href="#appendix-B-6.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-6.3">
-          <p id="appendix-B-6.3.1">Editorial fix to fingerprinting section.<a href="#appendix-B-6.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-6.3.1">Use of GREASE values in critical form is out of scope, but appendix illustrates that it can make sense to do, and emphasizes that indeed those options do cause errors when used with negative sign.<a href="#appendix-B-6.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-B-7">Since draft-amsuess-lake-edhoc-grease-00:<a href="#appendix-B-7" class="pilcrow">¶</a></p>
+<p id="appendix-B-7">Since draft-amsuess-lake-edhoc-grease-01:<a href="#appendix-B-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-8.1">
-          <p id="appendix-B-8.1.1">Expanded introduction section to just point to the abstract any more.<a href="#appendix-B-8.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-8.1.1">Document was adopted in LAKE.<a href="#appendix-B-8.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-8.2">
+          <p id="appendix-B-8.2.1">Instead of discouraging GREASE around fragmentation limits wholesale, suggest reduced frequency.<a href="#appendix-B-8.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-8.3">
+          <p id="appendix-B-8.3.1">Editorial fix to fingerprinting section.<a href="#appendix-B-8.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-B-9">Since draft-amsuess-core-edhoc-grease-01:<a href="#appendix-B-9" class="pilcrow">¶</a></p>
+<p id="appendix-B-9">Since draft-amsuess-lake-edhoc-grease-00:<a href="#appendix-B-9" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-10.1">
-          <p id="appendix-B-10.1.1">Update references to RFC9528 🎉<a href="#appendix-B-10.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-10.1.1">Expanded introduction section to just point to the abstract any more.<a href="#appendix-B-10.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-10.2">
-          <p id="appendix-B-10.2.1">Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease<a href="#appendix-B-10.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-B-10.3">
-          <p id="appendix-B-10.3.1">Process RFC9170<a href="#appendix-B-10.3.1" class="pilcrow">¶</a></p>
+      </ul>
+<p id="appendix-B-11">Since draft-amsuess-core-edhoc-grease-01:<a href="#appendix-B-11" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-10.3.2.1">
-              <p id="appendix-B-10.3.2.1.1">Add a section on failure processing<a href="#appendix-B-10.3.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-12.1">
+          <p id="appendix-B-12.1.1">Update references to RFC9528 🎉<a href="#appendix-B-12.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-B-10.3.2.2">
-              <p id="appendix-B-10.3.2.2.1">Reference where appropriate<a href="#appendix-B-10.3.2.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-12.2">
+          <p id="appendix-B-12.2.1">Change target WG to LAKE, renaming to draft-amsuess-lake-edhoc-grease<a href="#appendix-B-12.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-12.3">
+          <p id="appendix-B-12.3.1">Process RFC9170<a href="#appendix-B-12.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-12.3.2.1">
+              <p id="appendix-B-12.3.2.1.1">Add a section on failure processing<a href="#appendix-B-12.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-B-12.3.2.2">
+              <p id="appendix-B-12.3.2.2.1">Reference where appropriate<a href="#appendix-B-12.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
-        <li class="normal" id="appendix-B-10.4">
-          <p id="appendix-B-10.4.1">Process draft-edm-protocol-greasing-02<a href="#appendix-B-10.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-12.4">
+          <p id="appendix-B-12.4.1">Process draft-edm-protocol-greasing-02<a href="#appendix-B-12.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-10.4.2.1">
-              <p id="appendix-B-10.4.2.1.1">Variability outside of extension points<a href="#appendix-B-10.4.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-12.4.2.1">
+              <p id="appendix-B-12.4.2.1.1">Variability outside of extension points<a href="#appendix-B-12.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-B-10.4.2.2">
-              <p id="appendix-B-10.4.2.2.1">Be firmer against recognizing GREASE values<a href="#appendix-B-10.4.2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-B-12.4.2.2">
+              <p id="appendix-B-12.4.2.2.1">Be firmer against recognizing GREASE values<a href="#appendix-B-12.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="appendix-B-10.4.2.3">
-              <p id="appendix-B-10.4.2.3.1">Point out that future options may be registered (instead of the suggested algorithmic registrations)<a href="#appendix-B-10.4.2.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="appendix-B-12.4.2.3">
+              <p id="appendix-B-12.4.2.3.1">Point out that future options may be registered (instead of the suggested algorithmic registrations)<a href="#appendix-B-12.4.2.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
       </ul>
-<p id="appendix-B-11">Since -00:<a href="#appendix-B-11" class="pilcrow">¶</a></p>
+<p id="appendix-B-13">Since -00:<a href="#appendix-B-13" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-B-12.1">
-          <p id="appendix-B-12.1.1">Fixed a mix-up between positivity and criticality of options.<a href="#appendix-B-12.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B-14.1">
+          <p id="appendix-B-14.1.1">Fixed a mix-up between positivity and criticality of options.<a href="#appendix-B-14.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-12.2">
-          <p id="appendix-B-12.2.1">Adjusted numbers accordingly to once more fit in the <code>0xa.</code> pattern
-(actually they're using <code>0x.a</code>, but that doesn't work the same way with CBOR).<a href="#appendix-B-12.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-14.2">
+          <p id="appendix-B-14.2.1">Adjusted numbers accordingly to once more fit in the <code>0xa.</code> pattern
+(actually they're using <code>0x.a</code>, but that doesn't work the same way with CBOR).<a href="#appendix-B-14.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-B-12.3">
-          <p id="appendix-B-12.3.1">Text improvements around recipient side processing.<a href="#appendix-B-12.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-B-14.3">
+          <p id="appendix-B-14.3.1">Text improvements around recipient side processing.<a href="#appendix-B-14.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
