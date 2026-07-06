@@ -184,6 +184,9 @@ and to increase the anonymity set of other users of the same algorithm.
 The use of GREASE has no impact on security
 in a correct EDHOC implementation.
 
+As the application of GREASE contributes to an ecosystem that can have security updates deployed in the future,
+implementers of EDHOC are strongly encouraged to apply GREASE regularly whenever their operational constraints permit it.
+
 # IANA considerations
 
 ## EDHOC EAD labels
