@@ -145,7 +145,8 @@ at any position in its sequence of preferred cipher suites.
 A Responder MUST NOT support any of these GREASE cipher suites,
 and MUST treat them like any other cipher suite it does not support.
 
-Thus, these cipher suites never occur as the selected cipher suite.
+Thus, a GREASE cipher suite never occurs as the selected cipher suite,
+i.e., it is never specified as the last cipher suite in EDHOC message_1.
 An Initiator whose choice of a GREASE cipher suite is accepted
 needs to discontinue the protocol.
 
