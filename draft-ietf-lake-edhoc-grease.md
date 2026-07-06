@@ -22,7 +22,7 @@ informative:
 This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS,
 to the ecosystem of Ephemeral Diffie-Hellman Over COSE (EDHOC).
-It reserves a set of non-critical External Authorization Data (EAD) labels and unusable cipher suites
+It reserves a set of External Authorization Data (EAD) labels and unusable cipher suites
 that may be included in messages
 to ensure peers correctly handle unknown values.
 
