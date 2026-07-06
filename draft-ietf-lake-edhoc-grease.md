@@ -78,6 +78,10 @@ The extension point of COSE header parameters
 is beyond the scope of this document,
 and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
+## Terminology
+
+{::boilerplate bcp14-tagged}
+
 # The GREASE EAD labels
 
 This document registers the following EAD labels as GREASE EAD items:
