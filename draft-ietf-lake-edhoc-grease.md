@@ -207,7 +207,7 @@ and this document as a reference.
 # Using extension points beyond successful EDHOC runs
 
 Some ways of using the extension points, in particular
-the critical (negative) use of the GREASE EAD labels
+the use of critical GREASE EAD items
 and
 placing a GREASE cipher suite in the selected position
 do not result in the successful continuation of the EDHOC session.
