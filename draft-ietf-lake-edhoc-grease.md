@@ -91,6 +91,7 @@ This document registers the following EAD labels for use with GREASE EAD items:
 These EAD labels can be used in any EDHOC message
 for non-critical EAD items (see {{Section 3.8 of RFC9528}}).
 
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 23 precious small values).
 It is expected that future documents register additional values with the same semantics.
 
 ## Use of GREASE EAD items by message senders
@@ -140,6 +141,7 @@ This document registers the following GREASE cipher suites:
 
 160, 41120, -41121, 43690
 
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 46 precious small values), and both available signs.
 It is expected that future documents register additional values with the same semantics.
 
 An Initiator may insert a GREASE cipher suite
