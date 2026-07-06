@@ -233,6 +233,20 @@ therefore that application is out of scope.
 
 # Change log
 
+Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.
+
+* seccons: Stronly encourage use of GREASE
+* Explicit SHOULD on applying default processing rules (not just by exclusion of SHOULD NOT attempt)
+* Point to EDHOC CS-RNG for fingerprint resistance
+* Point to CORECONF as example of how to report
+* Add remark on why numeric values were chosen
+* Elaboration on cipher suite selection
+* Added BCP14 boilerplate Terminology section
+* Updated reference from edm-protocol-greasing-02 to iab-protocol-greasing (currently at -01)
+* Editorial fixes; highlights:
+  - Consistency around "EAD items" and "EAD labels"
+  - EAD items can be critical/non-critical, not labels
+
 Since draft-ietf-lake-edhoc-grease-00: Resolve all open issues.
 
 * Question on "is this better than padding" removed. (There are currently implementations of EDHOC that can't use all EAD values but can do padding).
