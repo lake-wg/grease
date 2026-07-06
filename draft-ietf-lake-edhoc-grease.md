@@ -98,6 +98,7 @@ It is expected that future documents register additional values with the same se
 
 A sender of an EDHOC message MAY include an arbitrary number of GREASE EAD items,
 with any or no ead_value (that is, with or without a byte string of any usable length).
+Both parties (the Initiator and the Responder) can send GREASE EAD items in any EDHOC message, without any need for coordination.
 
 Senders SHOULD consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
@@ -233,9 +234,13 @@ therefore that application is out of scope.
 
 # Change log
 
+Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
+
+* Using EADs by sender: Point out that both parties are senders and can grease any message.
+
 Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.
 
-* seccons: Stronly encourage use of GREASE
+* seccons: Strongly encourage use of GREASE
 * Explicit SHOULD on applying default processing rules (not just by exclusion of SHOULD NOT attempt)
 * Point to EDHOC CS-RNG for fingerprint resistance
 * Point to CORECONF as example of how to report
