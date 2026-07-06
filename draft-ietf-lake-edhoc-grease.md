@@ -285,5 +285,7 @@ Since -00:
 # Acknowledgements
 {:numbered="false"}
 
-Marco Tiloca pointed out a critical error in the numeric constructions.
+Marco Tiloca pointed out a critical error in the numeric constructions,
+and provided many general improvements.
 Göran Selander provided input to reduce mistakable text.
+Meiling Chen and Shujaatali Badami found places where the text did not provide the right guidance to readers.
