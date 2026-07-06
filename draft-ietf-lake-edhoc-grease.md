@@ -197,9 +197,9 @@ established in {{RFC9528}}:
 
 160, 41120, -41121, 43690
 
-All share the name "GREASE",
+All share
 the array N/A,
-the description "Unimplementable cipher suite to ensure extensibility",
+the description "Unimplementable GREASE cipher suite to ensure extensibility",
 and this document as a reference.
 
 --- back
