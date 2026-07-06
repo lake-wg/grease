@@ -95,9 +95,8 @@ It is expected that future documents register additional values with the same se
 
 ## Use of GREASE EAD items by message senders
 
-A sender of an EDHOC message MAY send a GREASE EAD item using the non-critical (positive) form at any time,
-with any or no EAD value (that is, with or without a byte string of any usable length),
-in any message.
+A sender of an EDHOC message MAY include an arbitrary number of GREASE EAD items,
+with any or no ead_value (that is, with or without a byte string of any usable length).
 
 Senders SHOULD consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
