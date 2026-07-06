@@ -118,6 +118,9 @@ A method of applying GREASE is suggested as follows:
 * Add the selected GREASE label with a value of the selected length,
   filled with random bytes.
 
+Running EDHOC already requires the presence of a cryptographically secure random number generator.
+Implementers can use that same source here to avoid any privacy implications from insufficiently initialized faster sources of randomness.
+
 ## Use of GREASE EAD items by message recipients
 
 A party receiving a GREASE EAD item MUST NOT alter its behavior
