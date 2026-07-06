@@ -55,7 +55,7 @@ they can afford to send additional data.
 
 ## Variability in other extension points
 
-If the selected method is unsupported by the peer,
+If the selected method is unsupported by the Responder,
 EDHOC does not conclude successfully.
 While values could be reserved for these for use as GREASE,
 these failed attempts would not be verified between the EDHOC participants
