@@ -17,9 +17,9 @@ Abstract
    This document applies the extensibility mechanism GREASE (Generate
    Random Extensions And Sustain Extensibility), which was pioneered for
    TLS, to the ecosystem of Ephemeral Diffie-Hellman Over COSE (EDHOC).
-   It reserves a set of non-critical External Authorization Data (EAD)
-   labels and unusable cipher suites that may be included in messages to
-   ensure peers correctly handle unknown values.
+   It reserves a set of External Authorization Data (EAD) labels and
+   unusable cipher suites that may be included in messages to ensure
+   peers correctly handle unknown values.
 
 Discussion Venues
 
@@ -68,6 +68,7 @@ Table of Contents
 
    1.  Introduction
      1.1.  Variability in other extension points
+     1.2.  Terminology
    2.  The GREASE EAD labels
      2.1.  Use of GREASE EAD items by message senders
        2.1.1.  Pattern for limited fingerprinting
@@ -96,7 +97,7 @@ Table of Contents
 
    The introduction of [RFC8701] and Section 3.3 of [RFC9170] provide
    comprehensive motivation for adding such extensions;
-   [I-D.edm-protocol-greasing-02] provides additional background that
+   [I-D.iab-protocol-greasing] provides additional background that
    influenced this document.
 
    The extension points of the EDHOC protocol are cipher suites,
@@ -112,18 +113,18 @@ Table of Contents
 
 1.1.  Variability in other extension points
 
-   If the selected method is unsupported by the peer, EDHOC does not
-   conclude successfully.  While values could be reserved for these for
-   use as GREASE, these failed attempts would not be verified between
-   the EDHOC participants without maintaining state between attempted
-   EDHOC sessions.  Such an addition is considered impractical for
-   constrained devices, and thus out of scope for this document.
+   If the selected method is unsupported by the Responder, EDHOC does
+   not conclude successfully.  While values could be reserved for these
+   for use as GREASE, these failed attempts would not be verified
+   between the EDHOC participants without maintaining state between
+   attempted EDHOC sessions.  Such an addition is considered impractical
+   for constrained devices, and thus out of scope for this document.
 
    Recommendations for GREASE in Section 4 of
-   [I-D.edm-protocol-greasing-02] also include varying other aspects of
-   the protocol, such as varying sequences of elements.  EDHOC has
-   little known variability, and intentionally limits choice at times
-   (for example, Section 3.3.2 of [RFC9528] allows only the numeric
+   [I-D.iab-protocol-greasing] also include varying other aspects of the
+   protocol, such as varying sequences of elements.  EDHOC has little
+   known variability, and intentionally limits choice at times (for
+   example, Section 3.3.2 of [RFC9528] allows only the numeric
    identifier form where that is possible).  Where variation is allowed,
    e.g., in padding or in the ordering of EAD items, applications are
    encouraged to exercise it.
@@ -132,24 +133,32 @@ Table of Contents
    ID_CRED_x types) is beyond the scope of this document, and might be
    addressed orthogonally in the "COSE Header Parameters" registry.
 
+1.2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
 2.  The GREASE EAD labels
 
-   This document registers the following EAD labels as GREASE EAD items:
+   This document registers the following EAD labels for use with GREASE
+   EAD items:
 
    160, 41120, 43690, 44975
 
-   These EAD labels are available in all EDHOC messages.  They are used
-   in their positive (non-critical) form.
+   These EAD labels can be used in any EDHOC message for non-critical
+   EAD items (see Section 3.8 of [RFC9528]).
 
    It is expected that future documents register additional values with
    the same semantics.
 
 2.1.  Use of GREASE EAD items by message senders
 
-   A sender of an EDHOC message MAY send a GREASE EAD item using the
-   non-critical (positive) form at any time, with any or no EAD value
-   (that is, with or without a byte string of any usable length), in any
-   message.
+   A sender of an EDHOC message MAY include an arbitrary number of
+   GREASE EAD items, with any or no ead_value (that is, with or without
+   a byte string of any usable length).
 
    Senders SHOULD consider the properties of the network their messages
    are sent over, and refrain from adding GREASE when its use would be
@@ -191,7 +200,7 @@ Table of Contents
    present.
 
    Implementations SHOULD NOT attempt to recognize GREASE EAD items, and
-   apply the default processing rules.
+   SHOULD apply the default processing rules.
 
 3.  GREASE cipher suites
 
@@ -208,9 +217,11 @@ Table of Contents
    A Responder MUST NOT support any of these GREASE cipher suites, and
    MUST treat them like any other cipher suite it does not support.
 
-   Thus, these cipher suites never occur as the selected cipher suite.
-   An Initiator whose choice of a GREASE cipher suite is accepted needs
-   to discontinue the protocol.
+   Thus, a GREASE cipher suite never occurs as the selected cipher
+   suite, i.e., it is never specified as the last cipher suite in EDHOC
+   message_1.  An Initiator whose offer of a GREASE cipher suite is
+   accepted through cipher suite negotiation (Section 6.3 of [RFC9528])
+   needs to discontinue the protocol.
 
 4.  Processing of GREASE-related failures
 
@@ -259,9 +270,9 @@ Table of Contents
 
    160, 41120, -41121, 43690
 
-   All share the name "GREASE", the array N/A, the description
-   "Unimplementable cipher suite to ensure extensibility", and this
-   document as a reference.
+   All share the array N/A, the description "Unimplementable GREASE
+   cipher suite to ensure extensibility", and this document as a
+   reference.
 
 8.  References
 
@@ -271,6 +282,15 @@ Table of Contents
               "Ephemeral Diffie-Hellman Over COSE (EDHOC)", RFC 9528,
               DOI 10.17487/RFC9528, March 2024,
               <https://www.rfc-editor.org/rfc/rfc9528>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 8.2.  Informative References
 
@@ -283,19 +303,19 @@ Table of Contents
               Extension Mechanisms", RFC 9170, DOI 10.17487/RFC9170,
               December 2021, <https://www.rfc-editor.org/rfc/rfc9170>.
 
-   [I-D.edm-protocol-greasing-02]
-              Pardue, L., "Maintaining Protocols Using Grease and
-              Variability", Work in Progress, Internet-Draft, draft-edm-
-              protocol-greasing-02, 10 July 2023,
-              <https://datatracker.ietf.org/doc/html/draft-edm-protocol-
-              greasing-02>.
+   [I-D.iab-protocol-greasing]
+              Pardue, L., Pauly, T., and D. Thaler, "Considerations For
+              Maintaining Protocols Using Grease and Variability", Work
+              in Progress, Internet-Draft, draft-iab-protocol-greasing-
+              01, 5 July 2026, <https://datatracker.ietf.org/doc/html/
+              draft-iab-protocol-greasing-01>.
 
 Appendix A.  Using extension points beyond successful EDHOC runs
 
-   Some ways of using the extension points, in particular the critical
-   (negative) use of the GREASE EAD labels and placing a GREASE cipher
-   suite in the selected position do not result in the successful
-   continuation of the EDHOC session.
+   Some ways of using the extension points, in particular the use of
+   critical GREASE EAD items and placing a GREASE cipher suite in the
+   selected position do not result in the successful continuation of the
+   EDHOC session.
 
    They can be useful during testing (e.g., to verify that a peer does
    indeed implement the correct behavior of not silently tolerating
