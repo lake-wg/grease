@@ -129,7 +129,7 @@ in particular, it SHOULD randomly insert GREASE EAD items
 in later messages of a session in which unprocessed EAD items (including GREASE EAD items) were present.
 
 Implementations SHOULD NOT attempt to recognize GREASE EAD items,
-and apply the default processing rules.
+and SHOULD apply the default processing rules.
 
 # GREASE cipher suites
 
