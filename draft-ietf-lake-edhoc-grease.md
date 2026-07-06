@@ -98,6 +98,7 @@ It is expected that future documents register additional values with the same se
 
 A sender of an EDHOC message MAY include an arbitrary number of GREASE EAD items,
 with any or no ead_value (that is, with or without a byte string of any usable length).
+Both parties (the Initiator and the Responder) can send GREASE EAD items in any EDHOC message, without any need for coordination.
 
 Senders SHOULD consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
