@@ -147,7 +147,7 @@ and MUST treat them like any other cipher suite it does not support.
 
 Thus, a GREASE cipher suite never occurs as the selected cipher suite,
 i.e., it is never specified as the last cipher suite in EDHOC message_1.
-An Initiator whose choice of a GREASE cipher suite is accepted
+An Initiator whose offer of a GREASE cipher suite is accepted through cipher suite negotiation ({{Section 6.3 of RFC9528}})
 needs to discontinue the protocol.
 
 # Processing of GREASE-related failures
