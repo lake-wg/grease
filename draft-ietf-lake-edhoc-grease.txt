@@ -151,8 +151,10 @@ Table of Contents
    These EAD labels can be used in any EDHOC message for non-critical
    EAD items (see Section 3.8 of [RFC9528]).
 
-   It is expected that future documents register additional values with
-   the same semantics.
+   The numbers cover the different lengths of encoding available in CBOR
+   for the registry's range (except the 23 precious small values).  It
+   is expected that future documents register additional values with the
+   same semantics.
 
 2.1.  Use of GREASE EAD items by message senders
 
@@ -188,6 +190,11 @@ Table of Contents
    *  Add the selected GREASE label with a value of the selected length,
       filled with random bytes.
 
+   Running EDHOC already requires the presence of a cryptographically
+   secure random number generator.  Implementers can use that same
+   source here to avoid any privacy implications from insufficiently
+   initialized faster sources of randomness.
+
 2.2.  Use of GREASE EAD items by message recipients
 
    A party receiving a GREASE EAD item MUST NOT alter its behavior in
@@ -208,8 +215,10 @@ Table of Contents
 
    160, 41120, -41121, 43690
 
-   It is expected that future documents register additional values with
-   the same semantics.
+   The numbers cover the different lengths of encoding available in CBOR
+   for the registry's range (except the 46 precious small values), and
+   both available signs.  It is expected that future documents register
+   additional values with the same semantics.
 
    An Initiator may insert a GREASE cipher suite at any position in its
    sequence of preferred cipher suites.
@@ -233,6 +242,10 @@ Table of Contents
    originate from the use of GREASE or that are significantly likely to
    originate from there.  This provides a feedback path as described in
    Section 4.4 of [RFC9170].
+
+   On constrained devices, one suitable operator feedback channel is
+   CORECONF [I-D.ietf-core-comi]; no general YANG model is available for
+   that purpose.
 
    Whether logging of GREASE-related failed session details is
    appropriate depends on the privacy policies of the application.
@@ -309,6 +322,13 @@ Table of Contents
               in Progress, Internet-Draft, draft-iab-protocol-greasing-
               01, 5 July 2026, <https://datatracker.ietf.org/doc/html/
               draft-iab-protocol-greasing-01>.
+
+   [I-D.ietf-core-comi]
+              Veillette, M., Van der Stok, P., Pelov, A., Bierman, A.,
+              and C. Bormann, "CoAP Management Interface (CORECONF)",
+              Work in Progress, Internet-Draft, draft-ietf-core-comi-21,
+              2 March 2026, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-core-comi-21>.
 
 Appendix A.  Using extension points beyond successful EDHOC runs
 

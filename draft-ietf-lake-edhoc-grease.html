@@ -1300,7 +1300,8 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
 <p id="section-2-2">160, 41120, 43690, 44975<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">These EAD labels can be used in any EDHOC message
 for non-critical EAD items (see <span><a href="https://rfc-editor.org/rfc/rfc9528#section-3.8" class="relref">Section 3.8</a> of [<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>).<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4">It is expected that future documents register additional values with the same semantics.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-4">The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 23 precious small values).
+It is expected that future documents register additional values with the same semantics.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <div id="use-of-grease-ead-items-by-message-senders">
 <section id="section-2.1">
         <h3 id="name-use-of-grease-ead-items-by-">
@@ -1336,6 +1337,8 @@ to ensure that errors resulting from the use of GREASE are detected.<a href="#se
 filled with random bytes.<a href="#section-2.1.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
+<p id="section-2.1.1-3">Running EDHOC already requires the presence of a cryptographically secure random number generator.
+Implementers can use that same source here to avoid any privacy implications from insufficiently initialized faster sources of randomness.<a href="#section-2.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1364,7 +1367,8 @@ and <span class="bcp14">SHOULD</span> apply the default processing rules.<a href
       </h2>
 <p id="section-3-1">This document registers the following GREASE cipher suites:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">160, 41120, -41121, 43690<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">It is expected that future documents register additional values with the same semantics.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-3">The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 46 precious small values), and both available signs.
+It is expected that future documents register additional values with the same semantics.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">An Initiator may insert a GREASE cipher suite
 at any position in its sequence of preferred cipher suites.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">A Responder <span class="bcp14">MUST NOT</span> support any of these GREASE cipher suites,
@@ -1386,8 +1390,10 @@ Any operator feedback channel, be it immediately to the user or through network 
 <span class="bcp14">SHOULD</span> warn the operator if there are errors that were determined to originate from the use of GREASE
 or that are significantly likely to originate from there.
 This provides a feedback path as described in <span><a href="https://rfc-editor.org/rfc/rfc9170#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9170" class="cite xref">RFC9170</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">Whether logging of GREASE-related failed session details is appropriate
-depends on the privacy policies of the application.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-2">On constrained devices, one suitable operator feedback channel is CORECONF <span>[<a href="#I-D.ietf-core-comi" class="cite xref">I-D.ietf-core-comi</a>]</span>;
+no general YANG model is available for that purpose.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">Whether logging of GREASE-related failed session details is appropriate
+depends on the privacy policies of the application.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="privacy-considerations">
@@ -1489,8 +1495,12 @@ and this document as a reference.<a href="#section-7.2-3" class="pilcrow">¶</a>
 <span class="refAuthor">Thomson, M.</span> and <span class="refAuthor">T. Pauly</span>, <span class="refTitle">"Long-Term Viability of Protocol Extension Mechanisms"</span>, <span class="seriesInfo">RFC 9170</span>, <span class="seriesInfo">DOI 10.17487/RFC9170</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9170">https://www.rfc-editor.org/rfc/rfc9170</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.iab-protocol-greasing">[I-D.iab-protocol-greasing]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Pardue, L.</span>, <span class="refAuthor">Pauly, T.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Considerations For Maintaining Protocols Using Grease and Variability"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-iab-protocol-greasing-01</span>, <time datetime="2026-07-05" class="refDate">5 July 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-iab-protocol-greasing-01">https://datatracker.ietf.org/doc/html/draft-iab-protocol-greasing-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-core-comi">[I-D.ietf-core-comi]</dt>
+      <dd>
+<span class="refAuthor">Veillette, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Pelov, A.</span>, <span class="refAuthor">Bierman, A.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"CoAP Management Interface (CORECONF)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-comi-21</span>, <time datetime="2026-03-02" class="refDate">2 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-comi-21">https://datatracker.ietf.org/doc/html/draft-ietf-core-comi-21</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
