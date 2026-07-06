@@ -234,6 +234,10 @@ therefore that application is out of scope.
 
 # Change log
 
+Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
+
+* Using EADs by sender: Point out that both parties are senders and can grease any message.
+
 Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.
 
 * seccons: Stronly encourage use of GREASE
