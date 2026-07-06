@@ -91,6 +91,7 @@ This document registers the following EAD labels for use with GREASE EAD items:
 These EAD labels can be used in any EDHOC message
 for non-critical EAD items (see {{Section 3.8 of RFC9528}}).
 
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 23 precious small values).
 It is expected that future documents register additional values with the same semantics.
 
 ## Use of GREASE EAD items by message senders
@@ -118,6 +119,9 @@ A method of applying GREASE is suggested as follows:
 * Add the selected GREASE label with a value of the selected length,
   filled with random bytes.
 
+Running EDHOC already requires the presence of a cryptographically secure random number generator.
+Implementers can use that same source here to avoid any privacy implications from insufficiently initialized faster sources of randomness.
+
 ## Use of GREASE EAD items by message recipients
 
 A party receiving a GREASE EAD item MUST NOT alter its behavior
@@ -137,6 +141,7 @@ This document registers the following GREASE cipher suites:
 
 160, 41120, -41121, 43690
 
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 46 precious small values), and both available signs.
 It is expected that future documents register additional values with the same semantics.
 
 An Initiator may insert a GREASE cipher suite
@@ -158,6 +163,9 @@ Any operator feedback channel, be it immediately to the user or through network 
 SHOULD warn the operator if there are errors that were determined to originate from the use of GREASE
 or that are significantly likely to originate from there.
 This provides a feedback path as described in {{Section 4.4 of RFC9170}}.
+
+On constrained devices, one suitable operator feedback channel is CORECONF {{?I-D.ietf-core-comi}};
+no general YANG model is available for that purpose.
 
 Whether logging of GREASE-related failed session details is appropriate
 depends on the privacy policies of the application.
