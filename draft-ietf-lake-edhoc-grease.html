@@ -9,26 +9,27 @@
 <meta content="
        This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS,
-to the EDHOC ecosystem.
-It reserves a set of non-critical EAD labels and unusable cipher suites
+to the ecosystem of Ephemeral Diffie-Hellman Over COSE (EDHOC).
+It reserves a set of External Authorization Data (EAD) labels and unusable cipher suites
 that may be included in messages
 to ensure peers correctly handle unknown values. 
     " name="description">
-<meta content="xml2rfc 3.31.0" name="generator">
+<meta content="xml2rfc 3.34.0" name="generator">
 <meta content="draft-ietf-lake-edhoc-grease-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.31.0
-    Python 3.12.12
-    ConfigArgParse 1.7
+  xml2rfc 3.34.0
+    Python 3.14.5
+    ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 6.0.2
-    platformdirs 4.5.1
+    lxml 6.1.1
+    natsort 8.4.0
+    platformdirs 4.10.0
     pycountry 24.6.1
     PyYAML 6.0.3
-    requests 2.32.5
-    wcwidth 0.3.0
+    requests 2.33.1
+    wcwidth 0.8.2
 -->
 <link href="draft-ietf-lake-edhoc-grease.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1049,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Applying Generate Random Extensions And </td>
-<td class="right">March 2026</td>
+<td class="right">July 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Amsüss</td>
-<td class="center">Expires 3 September 2026</td>
+<td class="center">Expires 7 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-lake-edhoc-grease-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-02" class="published">2 March 2026</time>
+<time datetime="2026-07-06" class="published">6 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-09-03">3 September 2026</time></dd>
+<dd class="expires"><time datetime="2027-01-07">7 January 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1085,8 +1086,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS,
-to the EDHOC ecosystem.
-It reserves a set of non-critical EAD labels and unusable cipher suites
+to the ecosystem of Ephemeral Diffie-Hellman Over COSE (EDHOC).
+It reserves a set of External Authorization Data (EAD) labels and unusable cipher suites
 that may be included in messages
 to ensure peers correctly handle unknown values.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
@@ -1120,7 +1121,7 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1155,21 +1156,24 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-variability-in-other-extens" class="internal xref">Variability in other extension points</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-the-grease-ead-labels" class="internal xref">The GREASE EAD labels</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-use-of-grease-eads-by-messa" class="internal xref">Use of GREASE EADs by message senders</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-use-of-grease-ead-items-by-" class="internal xref">Use of GREASE EAD items by message senders</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
-                    <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-pattern-for-limited-fingerp" class="internal xref">Pattern for limited fingerprinting</a></p>
+                    <p id="section-toc.1-1.2.2.1.2.1.1"><a href="#section-2.1.1" class="auto internal xref">2.1.1</a>.  <a href="#name-pattern-for-limited-fingerp" class="internal xref">Pattern for limited fingerprinting</a></p>
 </li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-use-of-grease-eads-by-messag" class="internal xref">Use of GREASE EADs by message recipients</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-use-of-grease-ead-items-by-m" class="internal xref">Use of GREASE EAD items by message recipients</a></p>
 </li>
             </ul>
 </li>
@@ -1177,7 +1181,7 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-grease-cipher-suites" class="internal xref">GREASE cipher suites</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-processing-of-grease-relate" class="internal xref">Processing of GREASE related failures</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-processing-of-grease-relate" class="internal xref">Processing of GREASE-related failures</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy considerations</a></p>
@@ -1189,7 +1193,7 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
-                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-edhoc-eads" class="internal xref">EDHOC EADs</a></p>
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-edhoc-ead-labels" class="internal xref">EDHOC EAD labels</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-edhoc-cipher-suites" class="internal xref">EDHOC cipher suites</a></p>
@@ -1230,14 +1234,14 @@ to ensure peers correctly handle unknown values.<a href="#section-abstract-1" cl
       </h2>
 <p id="section-1-1">This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS in <span>[<a href="#RFC8701" class="cite xref">RFC8701</a>]</span>,
-to the EDHOC <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span> ecosystem.<a href="#section-1-1" class="pilcrow">¶</a></p>
+to Ephemeral Diffie-Hellman Over COSE (EDHOC, <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>) ecosystem.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">The introduction of <span>[<a href="#RFC8701" class="cite xref">RFC8701</a>]</span> and <span><a href="https://rfc-editor.org/rfc/rfc9170#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC9170" class="cite xref">RFC9170</a>]</span> provide comprehensive motivation for adding such extensions;
-<span>[<a href="#I-D.edm-protocol-greasing-02" class="cite xref">I-D.edm-protocol-greasing-02</a>]</span> provides additional background that influenced this document.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">The extension points of the EDHOC protocol (<span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>) are
+<span>[<a href="#I-D.iab-protocol-greasing" class="cite xref">I-D.iab-protocol-greasing</a>]</span> provides additional background that influenced this document.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The extension points of the EDHOC protocol are
 cipher suites,
 methods,
-EADs (External Authorization Data items)
-and COSE headers.
+EAD (External Authorization Data) items
+and COSE header parameters.
 This document utilizes the cipher suite and EAD extension points.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Unlike in TLS GREASE <span>[<a href="#RFC8701" class="cite xref">RFC8701</a>]</span>,
 EDHOC is operating on tight bandwidth and message size budget,
@@ -1246,32 +1250,43 @@ Thus,
 more than with TLS GREASE,
 it is up to implementations to decide
 whether in their particular use case
-they can afford to send addtional data.<a href="#section-1-4" class="pilcrow">¶</a></p>
+they can afford to send additional data.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <div id="variability-in-other-extension-points">
 <section id="section-1.1">
         <h3 id="name-variability-in-other-extens">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-variability-in-other-extens" class="section-name selfRef">Variability in other extension points</a>
         </h3>
-<p id="section-1.1-1">If the selected method is unsupported by the peer,
+<p id="section-1.1-1">If the selected method is unsupported by the Responder,
 EDHOC does not conclude successfully.
 While values could be reserved for these for use as GREASE,
 these failed attempts would not be verified between the EDHOC participants
 without maintaining state between attempted EDHOC sessions.
 Such an addition is considered impractical for constrained devices,
 and thus out of scope for this document.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
-<p id="section-1.1-2">Recommendations for GREASE <span><a href="https://datatracker.ietf.org/doc/html/draft-edm-protocol-greasing-02#section-4" class="relref">Section 4</a> of [<a href="#I-D.edm-protocol-greasing-02" class="cite xref">I-D.edm-protocol-greasing-02</a>]</span>
+<p id="section-1.1-2">Recommendations for GREASE in <span><a href="https://datatracker.ietf.org/doc/html/draft-iab-protocol-greasing-01#section-4" class="relref">Section 4</a> of [<a href="#I-D.iab-protocol-greasing" class="cite xref">I-D.iab-protocol-greasing</a>]</span>
 also include varying other aspects of the protocol,
 such as varying sequences of elements.
 EDHOC has little known variability,
 and intentionally limits choice at times
 (for example, <span><a href="https://rfc-editor.org/rfc/rfc9528#section-3.3.2" class="relref">Section 3.3.2</a> of [<a href="#RFC9528" class="cite xref">RFC9528</a>]</span> allows only the numeric identifier form where that is possible).
 Where variation is allowed,
-e.g. in padding or in the ordering of EAD options,
+e.g., in padding or in the ordering of EAD items,
 applications are encouraged to exercise it.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
-<p id="section-1.1-3">The extension point of COSE headers
+<p id="section-1.1-3">The extension point of COSE header parameters
 (identifying other ID_CRED_x types)
 is beyond the scope of this document,
-and might be addressed orthogonally in the COSE header registry.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+and might be addressed orthogonally in the "COSE Header Parameters" registry.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terminology">
+<section id="section-1.2">
+        <h3 id="name-terminology">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+        </h3>
+<p id="section-1.2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1281,26 +1296,25 @@ and might be addressed orthogonally in the COSE header registry.<a href="#sectio
       <h2 id="name-the-grease-ead-labels">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-the-grease-ead-labels" class="section-name selfRef">The GREASE EAD labels</a>
       </h2>
-<p id="section-2-1">This document registers the following EAD labels as GREASE EADs:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">This document registers the following EAD labels for use with GREASE EAD items:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">160, 41120, 43690, 44975<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">These EADs are available in all EDHOC messages.
-The EADs are used in their positive (non-critical) form.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-3">These EAD labels can be used in any EDHOC message
+for non-critical EAD items (see <span><a href="https://rfc-editor.org/rfc/rfc9528#section-3.8" class="relref">Section 3.8</a> of [<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>).<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">It is expected that future documents register additional values with the same semantics.<a href="#section-2-4" class="pilcrow">¶</a></p>
-<div id="use-of-grease-eads-by-message-senders">
+<div id="use-of-grease-ead-items-by-message-senders">
 <section id="section-2.1">
-        <h3 id="name-use-of-grease-eads-by-messa">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-use-of-grease-eads-by-messa" class="section-name selfRef">Use of GREASE EADs by message senders</a>
+        <h3 id="name-use-of-grease-ead-items-by-">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-use-of-grease-ead-items-by-" class="section-name selfRef">Use of GREASE EAD items by message senders</a>
         </h3>
-<p id="section-2.1-1">A sender of an EDHOC message MAY send a GREASE EAD using the non-critical (positive) form at any time,
-with any or no EAD value (that is, with or without a byte string of any usable length),
-in any message.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">Senders SHOULD consider the properties of the network their messages are sent over,
+<p id="section-2.1-1">A sender of an EDHOC message <span class="bcp14">MAY</span> include an arbitrary number of GREASE EAD items,
+with any or no ead_value (that is, with or without a byte string of any usable length).<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-2">Senders <span class="bcp14">SHOULD</span> consider the properties of the network their messages are sent over,
 and refrain from adding GREASE when its use would be detrimental to the network
 (for example, they might use it less frequently when the added size causes fragmentation of the message).<a href="#section-2.1-2" class="pilcrow">¶</a></p>
-<p id="section-2.1-3">On networks where the data added by the grease EADs does not significantly impact the network,
-senders SHOULD irregularly send arbitrary (possibly random) GREASE EADs with their messages
+<p id="section-2.1-3">On networks where the data added by the grease EAD items does not significantly impact the network,
+senders <span class="bcp14">SHOULD</span> irregularly send arbitrary (possibly random) GREASE EAD items with their messages
 to ensure that errors resulting from the use of GREASE are detected.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
-<p id="section-2.1-4">The GREASE EADs MAY be used as an alternative form of padding.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+<p id="section-2.1-4">The GREASE EAD items <span class="bcp14">MAY</span> be used as an alternative form of padding.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
 <div id="suggested-pattern">
 <section id="section-2.1.1">
           <h4 id="name-pattern-for-limited-fingerp">
@@ -1326,19 +1340,19 @@ filled with random bytes.<a href="#section-2.1.1-2.4.1" class="pilcrow">¶</a></
 </div>
 </section>
 </div>
-<div id="use-of-grease-eads-by-message-recipients">
+<div id="use-of-grease-ead-items-by-message-recipients">
 <section id="section-2.2">
-        <h3 id="name-use-of-grease-eads-by-messag">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-use-of-grease-eads-by-messag" class="section-name selfRef">Use of GREASE EADs by message recipients</a>
+        <h3 id="name-use-of-grease-ead-items-by-m">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-use-of-grease-ead-items-by-m" class="section-name selfRef">Use of GREASE EAD items by message recipients</a>
         </h3>
-<p id="section-2.2-1">A party receiving a GREASE EAD MUST NOT alter its behavior
-in any way that would allow random GREASE EADs
+<p id="section-2.2-1">A party receiving a GREASE EAD item <span class="bcp14">MUST NOT</span> alter its behavior
+in any way that would allow random GREASE EAD items
 to alter the security context that gets established.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">It MAY alter its behavior in other ways;
-in particular, it SHOULD randomly insert GREASE EADs
-in later messages of an exchange in which unprocessed EADs (including GREASE EADs) were present.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<p id="section-2.2-3">Implementations SHOULD NOT attempt to recognize GREASE EADs,
-and apply the default processing rules.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">It <span class="bcp14">MAY</span> alter its behavior in other ways;
+in particular, it <span class="bcp14">SHOULD</span> randomly insert GREASE EAD items
+in later messages of a session in which unprocessed EAD items (including GREASE EAD items) were present.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">Implementations <span class="bcp14">SHOULD NOT</span> attempt to recognize GREASE EAD items,
+and <span class="bcp14">SHOULD</span> apply the default processing rules.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1348,30 +1362,31 @@ and apply the default processing rules.<a href="#section-2.2-3" class="pilcrow">
       <h2 id="name-grease-cipher-suites">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-grease-cipher-suites" class="section-name selfRef">GREASE cipher suites</a>
       </h2>
-<p id="section-3-1">This document registers the following cipher suites:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">This document registers the following GREASE cipher suites:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">160, 41120, -41121, 43690<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">It is expected that future documents register additional values with the same semantics.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">An initiator may insert a GREASE cipher suite
+<p id="section-3-4">An Initiator may insert a GREASE cipher suite
 at any position in its sequence of preferred cipher suites.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">A responder MUST NOT support any of these cipher suites,
-and MUST treat them like any other cipher suite it does not support.<a href="#section-3-5" class="pilcrow">¶</a></p>
-<p id="section-3-6">Thus, these cipher suites never occur as the selected cipher suite.
-An initiator whose choice of a GREASE cipher suite is accepted
+<p id="section-3-5">A Responder <span class="bcp14">MUST NOT</span> support any of these GREASE cipher suites,
+and <span class="bcp14">MUST</span> treat them like any other cipher suite it does not support.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">Thus, a GREASE cipher suite never occurs as the selected cipher suite,
+i.e., it is never specified as the last cipher suite in EDHOC message_1.
+An Initiator whose offer of a GREASE cipher suite is accepted through cipher suite negotiation (<span><a href="https://rfc-editor.org/rfc/rfc9528#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>)
 needs to discontinue the protocol.<a href="#section-3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="processing-of-grease-related-failures">
 <section id="section-4">
       <h2 id="name-processing-of-grease-relate">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-processing-of-grease-relate" class="section-name selfRef">Processing of GREASE related failures</a>
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-processing-of-grease-relate" class="section-name selfRef">Processing of GREASE-related failures</a>
       </h2>
-<p id="section-4-1">It is RECOMMENDED that any counters or statistics about successful and failed connections
-distinguish between connections in which GREASE was applied and those in which it was not applied.
+<p id="section-4-1">It is <span class="bcp14">RECOMMENDED</span> that any counters or statistics about successful and failed sessions
+distinguish between sessions in which GREASE was applied and those in which it was not applied.
 Any operator feedback channel, be it immediately to the user or through network monitoring,
-SHOULD warn the operator if there are errors that were determined to originate from the use of GREASE
+<span class="bcp14">SHOULD</span> warn the operator if there are errors that were determined to originate from the use of GREASE
 or that are significantly likely to originate from there.
 This provides a feedback path as described in <span><a href="https://rfc-editor.org/rfc/rfc9170#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9170" class="cite xref">RFC9170</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">Whether logging of GREASE related failed connection details is appropriate
+<p id="section-4-2">Whether logging of GREASE-related failed session details is appropriate
 depends on the privacy policies of the application.<a href="#section-4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1393,7 +1408,7 @@ and to increase the anonymity set of other users of the same algorithm.<a href="
       <h2 id="name-security-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">The use of the GREASE option has no impact on security
+<p id="section-6-1">The use of GREASE has no impact on security
 in a correct EDHOC implementation.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1402,10 +1417,10 @@ in a correct EDHOC implementation.<a href="#section-6-1" class="pilcrow">¶</a><
       <h2 id="name-iana-considerations">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA considerations</a>
       </h2>
-<div id="edhoc-eads">
+<div id="edhoc-ead-labels">
 <section id="section-7.1">
-        <h3 id="name-edhoc-eads">
-<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-edhoc-eads" class="section-name selfRef">EDHOC EADs</a>
+        <h3 id="name-edhoc-ead-labels">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-edhoc-ead-labels" class="section-name selfRef">EDHOC EAD labels</a>
         </h3>
 <p id="section-7.1-1">IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
@@ -1425,9 +1440,9 @@ and this document as a reference.<a href="#section-7.1-3" class="pilcrow">¶</a>
 four new values into the EDHOC Cipher Suites Registry
 established in <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>:<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <p id="section-7.2-2">160, 41120, -41121, 43690<a href="#section-7.2-2" class="pilcrow">¶</a></p>
-<p id="section-7.2-3">All share the name "GREASE",
+<p id="section-7.2-3">All share
 the array N/A,
-the description "Unimplementable cipher suite to ensure extensibility",
+the description "Unimplementable GREASE cipher suite to ensure extensibility",
 and this document as a reference.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1445,8 +1460,16 @@ and this document as a reference.<a href="#section-7.2-3" class="pilcrow">¶</a>
         </h3>
 <dl class="references">
 <dt id="RFC9528">[RFC9528]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Preuß Mattsson, J.</span>, and <span class="refAuthor">F. Palombini</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC)"</span>, <span class="seriesInfo">RFC 9528</span>, <span class="seriesInfo">DOI 10.17487/RFC9528</span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9528">https://www.rfc-editor.org/rfc/rfc9528</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1465,9 +1488,9 @@ and this document as a reference.<a href="#section-7.2-3" class="pilcrow">¶</a>
         <dd>
 <span class="refAuthor">Thomson, M.</span> and <span class="refAuthor">T. Pauly</span>, <span class="refTitle">"Long-Term Viability of Protocol Extension Mechanisms"</span>, <span class="seriesInfo">RFC 9170</span>, <span class="seriesInfo">DOI 10.17487/RFC9170</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9170">https://www.rfc-editor.org/rfc/rfc9170</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.edm-protocol-greasing-02">[I-D.edm-protocol-greasing-02]</dt>
+<dt id="I-D.iab-protocol-greasing">[I-D.iab-protocol-greasing]</dt>
       <dd>
-<span class="refAuthor">Pardue, L.</span>, <span class="refTitle">"Maintaining Protocols Using Grease and Variability"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-edm-protocol-greasing-02</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-edm-protocol-greasing-02">https://datatracker.ietf.org/doc/html/draft-edm-protocol-greasing-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Pardue, L.</span>, <span class="refAuthor">Pauly, T.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Considerations For Maintaining Protocols Using Grease and Variability"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-iab-protocol-greasing-01</span>, <time datetime="2026-07-05" class="refDate">5 July 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-iab-protocol-greasing-01">https://datatracker.ietf.org/doc/html/draft-iab-protocol-greasing-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1480,13 +1503,13 @@ and this document as a reference.<a href="#section-7.2-3" class="pilcrow">¶</a>
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-using-extension-points-beyo" class="section-name selfRef">Using extension points beyond successful EDHOC runs</a>
       </h2>
 <p id="appendix-A-1">Some ways of using the extension points, in particular
-the critical (negative) use of the GREASE EAD labels
+the use of critical GREASE EAD items
 and
 placing a GREASE cipher suite in the selected position
 do not result in the successful continuation of the EDHOC session.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">They can be useful during testing
-(e.g. to verify that a peer does indeed implement the correct behavior of not silently tolerating critical EAD items it can not process),
-particulary when they allow a testing system to provoke an error response from the implementation under test.
+(e.g., to verify that a peer does indeed implement the correct behavior of not silently tolerating critical EAD items it can not process),
+particularly when they allow a testing system to provoke an error response from the implementation under test.
 However,
 this document is concerned with test performed during successful operation,
 therefore that application is out of scope.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
