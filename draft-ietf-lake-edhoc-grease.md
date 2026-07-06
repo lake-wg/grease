@@ -164,6 +164,9 @@ SHOULD warn the operator if there are errors that were determined to originate f
 or that are significantly likely to originate from there.
 This provides a feedback path as described in {{Section 4.4 of RFC9170}}.
 
+On constrained devices, one suitable operator feedback channel is CORECONF {{?I-D.ietf-core-comi}};
+no general YANG model is available for that purpose.
+
 Whether logging of GREASE-related failed session details is appropriate
 depends on the privacy policies of the application.
 
