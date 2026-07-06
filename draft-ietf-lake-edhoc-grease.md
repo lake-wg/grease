@@ -240,7 +240,7 @@ Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
 
 Since draft-ietf-lake-edhoc-grease-01: Address WGLC comments.
 
-* seccons: Stronly encourage use of GREASE
+* seccons: Strongly encourage use of GREASE
 * Explicit SHOULD on applying default processing rules (not just by exclusion of SHOULD NOT attempt)
 * Point to EDHOC CS-RNG for fingerprint resistance
 * Point to CORECONF as example of how to report
