@@ -1,0 +1,88 @@
+\include{shared/ietf-slides.tex}
+
+% about the presentation
+\title[Applying GREASE to EDHOC]{Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility}
+\subtitle{\texttt{draft-ietf-core-edhoc-grease-03}}
+\author{Christian~Amsüss}
+\date{LAKE at IETF126 / Vienna, 2026-07-20}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{GREASE}\Large
+  \begin{itemize}
+  \color{gray}
+    \item ``Only by using the extension capabilities of a protocol is the availability of that capability assured.'' \rfc{9170}
+    \item This draft just does that.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Status: WGLC completed, revised version submitted}\Large
+  Processed input from
+  \begin{itemize}
+    \item Marco Tiloca (all addressed)
+    \item Meiling Chen (all addressed)
+      \begin{itemize}
+        \item \Large What if someone hardcodes?
+      \end{itemize}
+    \item Shujaatali Badami (see next slides)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Responding to Shujaatali's concerns}\Large
+  \framesubtitle{Part I: For implementations}
+  \begin{itemize}
+    \item \rfc{8701} says ``SHOULD NOT retry''
+      \begin{itemize}
+        \item \Large works for browser but not for interfaceless device
+        \item focusing on reporting
+        \item \ietfdraft{iab-protocol-greasing} is not strict either
+      \end{itemize}
+    \bigskip
+    \item<2-> How should GREASE related failure be reported?
+      \begin{itemize}
+        \item \Large Informally pointing to CORECONF now.
+        \item Distinct from public reporting (out of scope).
+      \end{itemize}
+    \bigskip
+    \item<3-> Quality of randomness -- point to \rfc{4086} or \rfc{8937}
+      \begin{itemize}
+        \item \Large informal pointer to using existing cryptographic source
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Responding to Shujaatali's concerns}\Large
+  \framesubtitle{Part II: For text and process}
+  \begin{itemize}
+    \item Racing \ietfdraft{spm-lake-pqsuites} on new column
+      \begin{itemize}
+        \item \Large Algorithms can be ``used'' with any method.
+      \end{itemize}
+    \bigskip
+    \item Racing with other documents for numbers
+      \begin{itemize}
+        \item \Large IANA may assign different numbers -- \\ as long as encoding retains its shape.
+      \end{itemize}
+    \bigskip
+    \item Test vectors
+      \begin{itemize}
+        \item \Large IMO not practical; extension points are part of EDHOC.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Next steps}\Large
+  \begin{itemize}
+    \item Shepherd writeup
+    \bigskip
+    \item Solicited feedback from \ietfdraft{iab-protocol-greasing} authors can be part of IETF consensus call.
+      \begin{itemize}
+        \item \Large ``add grease when seeing grease'' → \\ ``add grease when seeing unprocessed options''?
+        \item s/GREASE/grease/
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\end{document}
