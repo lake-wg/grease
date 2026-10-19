@@ -80,7 +80,7 @@ and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
 ## Terminology
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # The GREASE EAD labels
 
