@@ -195,6 +195,8 @@ implementers of LAKE are strongly encouraged to apply GREASE regularly whenever 
 
 # IANA Considerations
 
+This document has the following actions for IANA.
+
 ## EDHOC EAD Labels
 
 IANA is requested to register
