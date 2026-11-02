@@ -34,7 +34,7 @@ This document applies the extensibility mechanism GREASE (Generate Random Extens
 which was pioneered for TLS in {{RFC8701}},
 to the LAKE (also called EDHOC) {{RFC9528}}) ecosystem.
 
-The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
+{{Section 1 of RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
 {{I-D.iab-protocol-greasing}} provides additional background that influenced this document.
 
 The extension points of the LAKE protocol are
