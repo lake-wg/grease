@@ -35,7 +35,7 @@ which was pioneered for TLS in {{RFC8701}},
 to the LAKE (also called EDHOC) {{RFC9528}}) ecosystem.
 
 {{Section 1 of RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
-{{I-D.iab-protocol-greasing}} provides additional background that influenced this document.
+{{I-D.iab-protocol-greasing-02}} provides additional background that influenced this document.
 
 The extension points of the LAKE protocol are
 cipher suites,
@@ -63,7 +63,7 @@ without maintaining state between attempted LAKE sessions.
 Such an addition is considered impractical for constrained devices,
 and thus out of scope for this document.
 
-Recommendations for GREASE in {{Section 4 of ?I-D.iab-protocol-greasing}}
+Recommendations for GREASE in {{Section 3 of ?I-D.iab-protocol-greasing-02}}
 also include varying other aspects of the protocol,
 such as varying sequences of elements.
 LAKE has little known variability,
