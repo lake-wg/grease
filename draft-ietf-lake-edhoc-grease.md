@@ -171,7 +171,7 @@ no general YANG model is available for that purpose.
 Whether logging of GREASE-related failed session details is appropriate
 depends on the privacy policies of the application.
 
-# Privacy considerations
+# Privacy Considerations
 
 The way in which GREASE is applied
 can contribute to identifying which implementation of EDHOC
@@ -188,9 +188,9 @@ in a correct EDHOC implementation.
 As the application of GREASE contributes to an ecosystem that can have security updates deployed in the future,
 implementers of EDHOC are strongly encouraged to apply GREASE regularly whenever their operational constraints permit it.
 
-# IANA considerations
+# IANA Considerations
 
-## EDHOC EAD labels
+## EDHOC EAD Labels
 
 IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
@@ -202,7 +202,7 @@ All share the name "GREASE",
 the description "Arbitrary data to ensure extensibility",
 and this document as a reference.
 
-## EDHOC cipher suites
+## EDHOC Cipher Suites
 
 IANA is requested to register
 four new values into the EDHOC Cipher Suites Registry
@@ -232,7 +232,7 @@ However,
 this document is concerned with test performed during successful operation,
 therefore that application is out of scope.
 
-# Change log
+# Change Log
 
 Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
 
