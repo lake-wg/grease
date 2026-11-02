@@ -1,5 +1,5 @@
 ---
-title: "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to EDHOC Extensibility"
+title: "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to LAKE Extensibility"
 docname: draft-ietf-lake-edhoc-grease-latest
 ipr: trust200902
 stand_alone: true
@@ -21,7 +21,7 @@ informative:
 
 This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS,
-to the ecosystem of Ephemeral Diffie-Hellman Over COSE (EDHOC).
+to the ecosystem of the LAKE protocol (also called EDHOC).
 It reserves a set of External Authorization Data (EAD) labels and unusable cipher suites
 that may be included in messages
 to ensure peers correctly handle unknown values.
@@ -32,12 +32,12 @@ to ensure peers correctly handle unknown values.
 
 This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS in {{RFC8701}},
-to Ephemeral Diffie-Hellman Over COSE (EDHOC, {{RFC9528}}) ecosystem.
+to the LAKE (also called EDHOC) {{RFC9528}}) ecosystem.
 
-The introduction of {{RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
-{{I-D.iab-protocol-greasing}} provides additional background that influenced this document.
+{{Section 1 of RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
+{{I-D.iab-protocol-greasing-02}} provides additional background that influenced this document.
 
-The extension points of the EDHOC protocol are
+The extension points of the LAKE protocol are
 cipher suites,
 methods,
 EAD (External Authorization Data) items
@@ -45,7 +45,7 @@ and COSE header parameters.
 This document utilizes the cipher suite and EAD extension points.
 
 Unlike in TLS GREASE {{RFC8701}},
-EDHOC is operating on tight bandwidth and message size budget,
+LAKE is operating on tight bandwidth and message size budget,
 with some messages just barely fitting within relevant networks' fragmentation limits.
 Thus,
 more than with TLS GREASE,
@@ -56,18 +56,18 @@ they can afford to send additional data.
 ## Variability in other extension points
 
 If the selected method is unsupported by the Responder,
-EDHOC does not conclude successfully.
+LAKE does not conclude successfully.
 While values could be reserved for these for use as GREASE,
-these failed attempts would not be verified between the EDHOC participants
-without maintaining state between attempted EDHOC sessions.
+these failed attempts would not be verified between the LAKE participants
+without maintaining state between attempted LAKE sessions.
 Such an addition is considered impractical for constrained devices,
 and thus out of scope for this document.
 
-Recommendations for GREASE in {{Section 4 of ?I-D.iab-protocol-greasing}}
+Recommendations for GREASE in {{Section 3 of ?I-D.iab-protocol-greasing-02}}
 also include varying other aspects of the protocol,
 such as varying sequences of elements.
-EDHOC has little known variability,
-and intentionally limits choice at times
+LAKE has little known variability,
+and it intentionally limits choice at times
 (for example, {{Section 3.3.2 of RFC9528}} allows only the numeric identifier form where that is possible).
 Where variation is allowed,
 e.g., in padding or in the ordering of EAD items,
@@ -75,12 +75,17 @@ applications are encouraged to exercise it.
 
 The extension point of COSE header parameters
 (identifying other ID_CRED_x types)
-is beyond the scope of this document,
+is beyond the scope of this document
 and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
 ## Terminology
 
 {::boilerplate bcp14-tagged}
+
+While EDHOC was originally an abbreviation for "Ephemeral Diffie-Hellman Over COSE",
+that abbreviation has been deprecated by the working group,
+given that not all methods use Ephemeral Diffie-Hellman any more.
+Since that deprecation, the names EDHOC and LAKE are used interchangably.
 
 # The GREASE EAD labels
 
@@ -88,20 +93,20 @@ This document registers the following EAD labels for use with GREASE EAD items:
 
 160, 41120, 43690, 44975
 
-These EAD labels can be used in any EDHOC message
+These EAD labels can be used in any LAKE message
 for non-critical EAD items (see {{Section 3.8 of RFC9528}}).
 
-The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 23 precious small values).
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 24 precious small values).
 It is expected that future documents register additional values with the same semantics.
 
 ## Use of GREASE EAD items by message senders
 
-A sender of an EDHOC message MAY include an arbitrary number of GREASE EAD items,
+A sender of an LAKE message MAY include an arbitrary number of GREASE EAD items,
 with any or no ead_value (that is, with or without a byte string of any usable length).
-Both parties (the Initiator and the Responder) can send GREASE EAD items in any EDHOC message, without any need for coordination.
+Both parties (the Initiator and the Responder) can send GREASE EAD items in any LAKE message, without any need for coordination.
 
-Senders SHOULD consider the properties of the network their messages are sent over,
-and refrain from adding GREASE when its use would be detrimental to the network
+Senders SHOULD consider the properties of the network their messages are sent over
+and refrain from applying GREASE when its use would be detrimental to the network
 (for example, they might use it less frequently when the added size causes fragmentation of the message).
 
 On networks where the data added by the grease EAD items does not significantly impact the network,
@@ -120,7 +125,7 @@ A method of applying GREASE is suggested as follows:
 * Add the selected GREASE label with a value of the selected length,
   filled with random bytes.
 
-Running EDHOC already requires the presence of a cryptographically secure random number generator.
+Running LAKE already requires the presence of a cryptographically secure random number generator.
 Implementers can use that same source here to avoid any privacy implications from insufficiently initialized faster sources of randomness.
 
 ## Use of GREASE EAD items by message recipients
@@ -133,7 +138,7 @@ It MAY alter its behavior in other ways;
 in particular, it SHOULD randomly insert GREASE EAD items
 in later messages of a session in which unprocessed EAD items (including GREASE EAD items) were present.
 
-Implementations SHOULD NOT attempt to recognize GREASE EAD items,
+Implementations SHOULD NOT attempt to recognize GREASE EAD items
 and SHOULD apply the default processing rules.
 
 # GREASE cipher suites
@@ -142,17 +147,17 @@ This document registers the following GREASE cipher suites:
 
 160, 41120, -41121, 43690
 
-The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 46 precious small values), and both available signs.
+The numbers cover the different lengths of encoding available in CBOR for the registry's range (except the 48 precious small values), and both available signs.
 It is expected that future documents register additional values with the same semantics.
 
 An Initiator may insert a GREASE cipher suite
 at any position in its sequence of preferred cipher suites.
 
-A Responder MUST NOT support any of these GREASE cipher suites,
+A Responder MUST NOT support any of these GREASE cipher suites
 and MUST treat them like any other cipher suite it does not support.
 
 Thus, a GREASE cipher suite never occurs as the selected cipher suite,
-i.e., it is never specified as the last cipher suite in EDHOC message_1.
+i.e., it is never specified as the last cipher suite in LAKE message_1.
 An Initiator whose offer of a GREASE cipher suite is accepted through cipher suite negotiation ({{Section 6.3 of RFC9528}})
 needs to discontinue the protocol.
 
@@ -171,30 +176,32 @@ no general YANG model is available for that purpose.
 Whether logging of GREASE-related failed session details is appropriate
 depends on the privacy policies of the application.
 
-# Privacy considerations
+# Privacy Considerations
 
 The way in which GREASE is applied
-can contribute to identifying which implementation of EDHOC
+can contribute to identifying which implementation of LAKE
 is being used.
-Implementers of EDHOC are encouraged to use the algorithm described in {{suggested-pattern}},
+Implementers of LAKE are encouraged to use the algorithm described in {{suggested-pattern}},
 both to reduce the likelihood of their implementation to be identified through the use of GREASE
 and to increase the anonymity set of other users of the same algorithm.
 
 # Security Considerations
 
 The use of GREASE has no impact on security
-in a correct EDHOC implementation.
+in a correct LAKE implementation.
 
 As the application of GREASE contributes to an ecosystem that can have security updates deployed in the future,
-implementers of EDHOC are strongly encouraged to apply GREASE regularly whenever their operational constraints permit it.
+implementers of LAKE are strongly encouraged to apply GREASE regularly whenever their operational constraints permit it.
 
-# IANA considerations
+# IANA Considerations
 
-## EDHOC EAD labels
+This document has the following actions for IANA.
+
+## EDHOC EAD Labels
 
 IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
-established in {{RFC9528}}:
+established in {{RFC9528}}, each with one of the following values in the "Label" column:
 
 160, 41120, 43690, 44975
 
@@ -202,11 +209,11 @@ All share the name "GREASE",
 the description "Arbitrary data to ensure extensibility",
 and this document as a reference.
 
-## EDHOC cipher suites
+## EDHOC Cipher Suites
 
 IANA is requested to register
 four new values into the EDHOC Cipher Suites Registry
-established in {{RFC9528}}:
+established in {{RFC9528}}, each with one of the following values in the "Value" column:
 
 160, 41120, -41121, 43690
 
@@ -217,13 +224,13 @@ and this document as a reference.
 
 --- back
 
-# Using extension points beyond successful EDHOC runs
+# Using extension points beyond successful LAKE runs
 
 Some ways of using the extension points, in particular
 the use of critical GREASE EAD items
 and
-placing a GREASE cipher suite in the selected position
-do not result in the successful continuation of the EDHOC session.
+placing a GREASE cipher suite in the position of the selected cipher suite,
+do not result in the successful continuation of the LAKE session.
 
 They can be useful during testing
 (e.g., to verify that a peer does indeed implement the correct behavior of not silently tolerating critical EAD items it can not process),
@@ -232,7 +239,11 @@ However,
 this document is concerned with test performed during successful operation,
 therefore that application is out of scope.
 
-# Change log
+# Change Log
+
+[^remove-changelog]
+
+[^remove-changelog]: This section is to be removed before publication.
 
 Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
 
