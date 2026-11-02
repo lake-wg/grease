@@ -229,7 +229,7 @@ and this document as a reference.
 Some ways of using the extension points, in particular
 the use of critical GREASE EAD items
 and
-placing a GREASE cipher suite in the selected position
+placing a GREASE cipher suite in the position of the selected cipher suite,
 do not result in the successful continuation of the LAKE session.
 
 They can be useful during testing
