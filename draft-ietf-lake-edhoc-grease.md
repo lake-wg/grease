@@ -241,6 +241,10 @@ therefore that application is out of scope.
 
 # Change Log
 
+[^remove-changelog]
+
+[^remove-changelog]: This section is to be removed before publication.
+
 Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
 
 * Using EADs by sender: Point out that both parties are senders and can grease any message.
