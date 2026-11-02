@@ -67,7 +67,7 @@ Recommendations for GREASE in {{Section 3 of ?I-D.iab-protocol-greasing-02}}
 also include varying other aspects of the protocol,
 such as varying sequences of elements.
 LAKE has little known variability,
-and intentionally limits choice at times
+and it intentionally limits choice at times
 (for example, {{Section 3.3.2 of RFC9528}} allows only the numeric identifier form where that is possible).
 Where variation is allowed,
 e.g., in padding or in the ordering of EAD items,
@@ -75,7 +75,7 @@ applications are encouraged to exercise it.
 
 The extension point of COSE header parameters
 (identifying other ID_CRED_x types)
-is beyond the scope of this document,
+is beyond the scope of this document
 and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
 ## Terminology
@@ -105,8 +105,8 @@ A sender of an LAKE message MAY include an arbitrary number of GREASE EAD items,
 with any or no ead_value (that is, with or without a byte string of any usable length).
 Both parties (the Initiator and the Responder) can send GREASE EAD items in any LAKE message, without any need for coordination.
 
-Senders SHOULD consider the properties of the network their messages are sent over,
-and refrain from adding GREASE when its use would be detrimental to the network
+Senders SHOULD consider the properties of the network their messages are sent over
+and refrain from applying GREASE when its use would be detrimental to the network
 (for example, they might use it less frequently when the added size causes fragmentation of the message).
 
 On networks where the data added by the grease EAD items does not significantly impact the network,
@@ -138,7 +138,7 @@ It MAY alter its behavior in other ways;
 in particular, it SHOULD randomly insert GREASE EAD items
 in later messages of a session in which unprocessed EAD items (including GREASE EAD items) were present.
 
-Implementations SHOULD NOT attempt to recognize GREASE EAD items,
+Implementations SHOULD NOT attempt to recognize GREASE EAD items
 and SHOULD apply the default processing rules.
 
 # GREASE cipher suites
@@ -153,7 +153,7 @@ It is expected that future documents register additional values with the same se
 An Initiator may insert a GREASE cipher suite
 at any position in its sequence of preferred cipher suites.
 
-A Responder MUST NOT support any of these GREASE cipher suites,
+A Responder MUST NOT support any of these GREASE cipher suites
 and MUST treat them like any other cipher suite it does not support.
 
 Thus, a GREASE cipher suite never occurs as the selected cipher suite,
