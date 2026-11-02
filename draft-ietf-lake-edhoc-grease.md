@@ -245,7 +245,14 @@ therefore that application is out of scope.
 
 [^remove-changelog]: This section is to be removed before publication.
 
-Since draft-ietf-lake-edhoc-grease-01: Address a WGLC comment that was missed.
+Since draft-ietf-lake-edhoc-grease-03: Address Marco's shepherd review.
+
+* Enact renaming from EDHOC to LAKE.
+* Fix counts of precious encoding points.
+* Fix reference pointing to wrong section after update.
+* Editorial changes.
+
+Since draft-ietf-lake-edhoc-grease-02: Address a WGLC comment that was missed.
 
 * Using EADs by sender: Point out that both parties are senders and can grease any message.
 
