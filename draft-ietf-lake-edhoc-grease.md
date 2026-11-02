@@ -201,7 +201,7 @@ This document has the following actions for IANA.
 
 IANA is requested to register
 four new entries into the EDHOC External Authorization Data Registry
-established in {{RFC9528}}:
+established in {{RFC9528}}, each with one of the following values in the "Label" column:
 
 160, 41120, 43690, 44975
 
@@ -213,7 +213,7 @@ and this document as a reference.
 
 IANA is requested to register
 four new values into the EDHOC Cipher Suites Registry
-established in {{RFC9528}}:
+established in {{RFC9528}}, each with one of the following values in the "Value" column:
 
 160, 41120, -41121, 43690
 
