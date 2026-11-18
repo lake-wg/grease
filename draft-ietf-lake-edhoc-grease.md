@@ -21,7 +21,7 @@ informative:
 
 This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS,
-to the ecosystem of the LAKE protocol (also called EDHOC).
+to the ecosystem of the Lightweight Authenticated Key Exchange (LAKE).
 It reserves a set of External Authorization Data (EAD) labels and unusable cipher suites
 that may be included in messages
 to ensure peers correctly handle unknown values.
@@ -32,7 +32,7 @@ to ensure peers correctly handle unknown values.
 
 This document applies the extensibility mechanism GREASE (Generate Random Extensions And Sustain Extensibility),
 which was pioneered for TLS in {{RFC8701}},
-to the LAKE (also called EDHOC) {{RFC9528}}) ecosystem.
+to the Lightweight Authenticated Key Exchange (LAKE, {{RFC9528}}) ecosystem.
 
 {{Section 1 of RFC8701}} and {{Section 3.3 of RFC9170}} provide comprehensive motivation for adding such extensions;
 {{I-D.iab-protocol-greasing-02}} provides additional background that influenced this document.
@@ -82,10 +82,12 @@ and might be addressed orthogonally in the "COSE Header Parameters" registry.
 
 {::boilerplate bcp14-tagged}
 
-While EDHOC was originally an abbreviation for "Ephemeral Diffie-Hellman Over COSE",
-that abbreviation has been deprecated by the working group,
-given that not all methods use Ephemeral Diffie-Hellman any more.
-Since that deprecation, the names EDHOC and LAKE are used interchangably.
+This document uses the acronym LAKE, expanded to Lightweight Authenticated Key Exchange,
+to denote the protocol specified as EDHOC in {{RFC9528}}.
+LAKE is also used in place of EDHOC in descriptive terms such as LAKE message_1 or LAKE EAD item.
+Identifiers defined literally in {{RFC9528}} or in IANA registries
+(e.g., EDHOC_Exporter, the EDHOC registries, media types, and URIs)
+are unchanged.
 
 # The GREASE EAD labels
 
@@ -244,6 +246,8 @@ therefore that application is out of scope.
 [^remove-changelog]
 
 [^remove-changelog]: This section is to be removed before publication.
+
+Since draft-ietf-lake-edhoc-grease-04: Align with WG's handling of the EDHOC-LAKE renaming.
 
 Since draft-ietf-lake-edhoc-grease-03: Address Marco's shepherd review.
 
